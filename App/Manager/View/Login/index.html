@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 2 | Log in</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="__PUBLIC__/admin/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="__PUBLIC__/admin/fonts/font-awesome.min.css">
+    <!-- Ionicons -->
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="__PUBLIC__/admin/css/AdminLTE.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="__PUBLIC__/admin/iCheck/square/blue.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+        <a href="../../index2.html"><b>{:C('COMM_TITLE')}</b></a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">登录</p>
+
+        <form action="" method="post">
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control" placeholder="用户名" name="username">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" placeholder="密码" name="password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control " placeholder="验证码" style="width: 60%" name="verify">
+                <span class="glyphicon glyphicon-picture form-control-feedback" style="margin-right: 130px;"></span>
+                <img src="{:U('Login/verify')}" id="verify"
+                        style="cursor: pointer;float: right;margin-top: -34px;height: 32px;width: 38%"/>
+            </div>
+            <div class="row">
+
+                <!-- /.col -->
+                <div class="col-xs-4 pull-right">
+                    <button type="button" class="btn btn-primary btn-block btn-flat" id="submit">登录</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </form>
+
+        <div class="social-auth-links text-center">
+
+        </div>
+        <!-- /.social-auth-links -->
+
+
+
+    </div>
+    <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery 2.2.0 -->
+<script src="__PUBLIC__/admin/jQuery/jQuery-2.2.0.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="__PUBLIC__/admin/js/bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="__PUBLIC__/admin/iCheck/icheck.min.js"></script>
+<script src="__PUBLIC__/admin/js/admin.js"></script>
+<script charset="utf-8" src="__PUBLIC__/layer/layer.js"></script>
+<script>
+    $(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function(){
+        $("#verify").click(function(){
+            var src="{:U('Login/verify','','')}";
+            var urlSrc=src+'/id/'+Math.random();
+            $(this).attr('src',urlSrc);
+
+        });
+        $("#submit").click(function(){
+            var username=$("input[name='username']").val();
+            var password=$("input[name='password']").val();
+            var verify=$("input[name='verify']").val();
+            if(username=='') {
+                throwExc("用户名必须填写")
+                return false;
+            }else if(password=='') {
+                throwExc("密码必须填写")
+                return false;
+            }else if(verify=='') {
+                throwExc("验证码必须填写")
+                return false;
+            }
+            $.post("{:U('Login/index')}",{
+                "username":username,
+                "password":password,
+                "verify":verify
+            },function( response ){
+                if(response.error==100) {
+                    throwExc(response.message);
+                    var src="{:U('Login/verify','','')}";
+                    var urlSrc=src+'/id/'+Math.random();
+                    $("#verify").attr('src',urlSrc);
+                    return false;
+                }else if(response.error==200) {
+                    showSucc(response.message);
+
+                    setTimeout("load()",1100);
+                }
+            },"json");
+
+        });
+    });
+    function load(){
+        window.location.href="{:U('Index/index')}";
+    }
+</script>
+</body>
+</html>

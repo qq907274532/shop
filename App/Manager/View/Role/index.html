@@ -1,0 +1,135 @@
+<include file="Public/header"/><!--/HEADER -->
+<!-- Left side column. contains the logo and sidebar -->
+<include file="Public/menu"/><!--/HEADER -->
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <ol class="breadcrumb pull-left" >
+            <li><a href="{:U('Index/index')}"><i class="fa fa-dashboard"></i> 首页</a></li>
+            <li><a href="#">权限管理</a></li>
+            <li class="active">角色管理</li>
+
+        </ol>
+        <div class="form-group pull-right">
+            <a href="{:U('Role/add')}" class="btn btn-primary  ">增加角色 <i class="fa fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">角色列表</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>ID</th>
+                                <th>名称</th>
+                                <th>备注</th>
+                                <th>状态</th>
+                                <th class="hidden-480">创建时间</th>
+                                <th class="hidden-480">更新时间</th>
+                                <th>操作</th>
+                            </tr>
+                            <volist name="data.list" id="v">
+                                <tr>
+                                    <td>{$v.id}</td>
+                                    <td>{$v.title}</td>
+                                    <td>{$v.remark}</td>
+                                    <td>
+                                        <if condition="$v.status eq Manager\Model\AuthGroupModel::STATUS_ENABLE">
+                                            <span class="label label-primary arrow-in">{$v.statusName}</span>
+                                            <else/>
+                                            <span class="label  label-danger arrow-out ">{$v.statusName}</span>
+                                        </if>
+                                    </td>
+
+                                    <td class="hidden-480">{$v.create_time}</td>
+                                    <td class="hidden-480">{$v.update_time}</td>
+                                    <td>
+                                        <a href="{:U('Role/rbac',array('id'=>$v['id']))}" class="fa fa-fire tip" data-toggle="tooltip" data-placement="top" title="授权" ></a>
+                                        <a href="{:U('Role/edit',array('id'=>$v['id']))}" class="fa fa-pencil tip" data-toggle="tooltip" data-placement="top" title="修改" ></a>
+
+                                        <if condition="$v.status eq Manager\Model\AuthGroupModel::STATUS_ENABLE">
+                                            <a href="javascript:;" class="fa fa-trash-o tip checkStatus" data-toggle="tooltip" data-placement="top" title="禁用" > </a>
+                                            <else/>
+                                            <a href="javascript:;" class="fa fa-trash-o tip checkStatus" data-toggle="tooltip" data-placement="top" title="启用" > </a>
+                                        </if>
+                                    </td>
+                                </tr>
+                            </volist>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <ul class="pagination pagination-sm no-margin pull-right">
+                            {$data.page}
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.box -->
+
+
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<include file="Public/footer"/><!--/HEADER -->
+<script type="text/javascript">
+    $(".checkStatus").click(function(){
+        var id=$(this).parent().parent().find("td:eq(0)").html();
+        var msg=$(this).attr("data-original-title");
+        var status;
+        if(msg=='禁用') {
+            status=1;
+        }else {
+            status=2;
+        }
+        layer.confirm('你确定要'+msg+"吗？", {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            $.ajax({
+                url: "{:U('Role/del')}",
+                type: "POST",
+                data :{ "id":id,"status":status },
+                dataType: "json",
+                success:function(response){
+                    if(response.error==100) {
+                        throwExc(response.message);
+                        return false;
+                    }else if(response.error==200){
+                        showSucc(response.message);
+                        setTimeout("load()",1000);
+                    }
+                },
+                error:function(response){
+                    throwExc(response.responseText);
+                    return false;
+                }
+            })
+        }, function(){
+            layer.msg('取消操作', {
+                time: 800, //20s后自动关闭
+            });
+        });
+
+    });
+
+    function load(){
+        location.reload() ;
+    }
+</script>

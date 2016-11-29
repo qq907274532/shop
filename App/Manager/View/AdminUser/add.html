@@ -1,0 +1,143 @@
+<include file="Public/header"/><!--/HEADER -->
+<!-- Left side column. contains the logo and sidebar -->
+<include file="Public/menu"/><!--/HEADER -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+     <ol class="breadcrumb pull-left" >
+            <li><a href="{:U('Index/index')}"><i class="fa fa-dashboard"></i> 首页</a></li>
+            <li><a href="#">管理员管理</a></li>
+            <li class="active">增加管理员</li>
+
+        </ol>
+        <div class="form-group pull-right">
+            <a href="{:U('AdminUser/index')}" class="btn btn-primary  "><i class="fa fa-arrow-left"></i>返回 </a>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+      
+        <!--/.col (left) -->
+        <!-- right column -->
+        <div class="col-md-12">
+          <!-- Horizontal Form -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">增加管理员</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal">
+              <div class="box-body">
+                  <div class="form-group">
+                      <label class="col-sm-3 control-label">用户名：</label>
+
+                      <div class="col-sm-4">
+                          <input type="text" class="form-control" name="username" id="username" value=""
+                                  placeholder="用户名">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-sm-3 control-label">密码：</label>
+
+                      <div class="col-sm-4">
+                          <input type="password" class="form-control" name="password" id="password"
+                                  placeholder="密码" value="">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="col-sm-3 control-label">确认密码：</label>
+
+                      <div class="col-sm-4">
+                          <input type="password" class="form-control" name="repassword" id="repassword"
+                                  placeholder="确认密码" value="">
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="col-sm-3 control-label">权限组：</label>
+
+                      <div class="col-sm-4">
+                          <select class="form-control" name="role_id" id="role">
+                              <volist name="roleList" id="v">
+                                  <option value="{$v.id}">{$v.title}</option>
+                              </volist>
+                          </select>
+
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="col-sm-offset-4 col-sm-6">
+
+                          <div type="text" class="btn btn-primary  " id="submit">提交</div>
+                      </div>
+                  </div>
+
+              </div>
+              <!-- /.box-body -->
+            
+              <!-- /.box-footer -->
+            </form>
+          </div>
+          <!-- /.box -->
+          <!-- general form elements disabled -->
+        
+          <!-- /.box -->
+        </div>
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+<include file="Public/footer"/><!--/HEADER -->
+<script type="text/javascript">
+    $(function(){
+        $("#submit").click(function(){
+            var sort=$("input[name='sort']").val();
+            var username=$("input[name='username']").val();
+            var password=$("input[name='password']").val();
+            var repassword=$("input[name='repassword']").val();
+            var role=$("#role").val();
+            if($.trim(username)=='') {
+                throwExc("用户名必须填写");
+                return false;
+            }
+            if($.trim(password)=='') {
+                throwExc("密码必须填写");
+                return false;
+            }
+            if($.trim(repassword)=='') {
+                throwExc("确认密码必须填写");
+                return false;
+            }
+            if(role==''&& !isNaN(role)) {
+                throwExc("请选择权限组");
+                return false;
+            }
+            $.post("{:U('AdminUser/add')}",{
+                'role':role,
+                'password':password,
+                'repassword':repassword,
+                'username':username
+            },function( response ){
+                if(response.error==100) {
+                    throwExc(response.message);
+                    return false;
+                }else if(response.error==200) {
+                    showSucc(response.message);
+                    setTimeout("load()",1000);
+                }
+            },"json");
+        });
+    });
+    function load(){
+        window.location.href="{:U('AdminUser/index')}";
+    }
+</script>
+ 
