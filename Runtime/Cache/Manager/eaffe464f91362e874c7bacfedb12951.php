@@ -160,7 +160,7 @@
 
         </ol>
         <div class="form-group pull-right">
-            <a href="<?php echo U('Role/add');?>" class="btn btn-primary  ">增加角色 <i class="fa fa-arrow-right"></i></a>
+            <a href="<?php echo U('Role/index');?>" class="btn btn-primary  "><i class="fa fa-arrow-left"></i> 返回 </a>
         </div>
     </section>
 
@@ -174,6 +174,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+                        <form action="" method="post" id="myForm">
                         <table class="table table-bordered">
 
                             <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val): $mod = ($i % 2 );++$i;?><tr>
@@ -185,16 +186,27 @@
 
                                 </tr>
                                 <?php if(is_array($val["child"])): $i = 0; $__LIST__ = $val["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
-                                        <td class="right  td<?php echo ($val["id"]); ?>" style="font-size: 15px;">
+                                        <td class="right  td<?php echo ($val["id"]); ?> checkAll" style="font-size: 15px;">
                                             <input type="checkbox" class="flat-red" name="node[]" value="<?php echo ($vo["id"]); ?>" <?php if($vo["access"] == 1): ?>checked=checked<?php endif; ?>
                                             /> <span class="lbl">&nbsp;&nbsp;<?php echo ($vo["title"]); ?></span>
                                         </td>
-                                        <?php if(is_array($vo["child"])): $i = 0; $__LIST__ = $vo["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><td class="td<?php echo ($val["id"]); ?>" style="font-size: 14px;">
+                                        <?php if(is_array($vo["child"])): $i = 0; $__LIST__ = $vo["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><td class="td<?php echo ($val["id"]); ?> checkAlls<?php echo ($vo["id"]); ?>" style="font-size: 14px;">
                                                 <input type="checkbox" class="flat-red" name="node[]" value="<?php echo ($v["id"]); ?>" <?php if($v["access"] == 1): ?>checked=checked<?php endif; ?>
                                                 /> <span class="lbl">&nbsp;&nbsp;<?php echo ($v["title"]); ?></span>
                                             </td><?php endforeach; endif; else: echo "" ;endif; ?>
                                     </tr><?php endforeach; endif; else: echo "" ;endif; endforeach; endif; else: echo "" ;endif; ?>
+                            <tr>
+                                <td colspan="15">
+                                    <input type="hidden" name="id" value="<?php echo ($id); ?>">
+                                    <div class="col-sm-offset-2 col-sm-2">
+                                        <div class="btn btn-primary   pull-right " id="submit">
+                                            提交
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
                         </table>
+                        </form>
                     </div>
                     <!-- /.box-body -->
 
@@ -254,57 +266,39 @@
             checkboxClass: 'icheckbox_flat-green',
             radioClass: 'iradio_flat-green'
         });
-    })
-    $(".right").click(function(  ){
-        var id=$(this).val();
-        alert(id);
-        $(this).on('ifChecked', function(event){
-            $('.td'+id).iCheck('check');
+
+        $('.right input').on('ifChecked', function(event){
+            var id=$(this).val();
+            $(".td"+id).iCheck('check');
         });
-        $(this).on('ifUnchecked', function(event){
-            $('.td'+id).iCheck('ifUnchecked');
+        $('.right input').on('ifUnchecked', function(event){
+            var id=$(this).val();
+            $('.td'+id).iCheck('uncheck');
         });
-    });
-    $(".checkStatus").click(function(){
-        var id=$(this).parent().parent().find("td:eq(0)").html();
-        var msg=$(this).attr("data-original-title");
-        var status;
-        if(msg=='禁用') {
-            status=1;
-        }else {
-            status=2;
-        }
-        layer.confirm('你确定要'+msg+"吗？", {
-            btn: ['确定','取消'] //按钮
-        }, function(){
-            $.ajax({
-                url: "<?php echo U('Role/del');?>",
-                type: "POST",
-                data :{ "id":id,"status":status },
-                dataType: "json",
-                success:function(response){
-                    if(response.error==100) {
-                        throwExc(response.message);
-                        return false;
-                    }else if(response.error==200){
-                        showSucc(response.message);
-                        setTimeout("load()",1000);
-                    }
-                },
-                error:function(response){
-                    throwExc(response.responseText);
+        $('.checkAll input').on('ifChecked', function(event){
+            var id=$(this).val();
+            $('.checkAlls'+id).iCheck('check');
+        });
+        $('.checkAll input').on('ifUnchecked', function(event){
+            var id=$(this).val();
+            $('.checkAlls'+id).iCheck('uncheck');
+        });
+        $("#submit").click(function(){
+            $.post("<?php echo U('Role/rbac');?>",$("#myForm").serialize(),function( response ){
+                if(response.error==100) {
+                    throwExc(response.message);
                     return false;
+                }else if(response.error==200) {
+                    showSucc(response.message);
+                    setTimeout("load()",1000);
                 }
-            })
-        }, function(){
-            layer.msg('取消操作', {
-                time: 800, //20s后自动关闭
-            });
+            },"json");
         });
 
-    });
-
+    })
     function load(){
         location.reload() ;
     }
+
+
 </script>

@@ -14,6 +14,7 @@
 
     <!-- Theme style -->
     <link rel="stylesheet" href="/Public/admin/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/Public/admin/iCheck/all.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/Public/admin/css/skins/_all-skins.min.css">
@@ -152,17 +153,82 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-       
-        <small></small>
-      </h1>
-      <ol class="breadcrumb" style="float: left;">
+
+      <ol class="breadcrumb" >
         <li><a href="<?php echo U('Index/index');?>"><i class="fa fa-dashboard"></i> 首页</a></li>
         <li><a href="#">首页</a></li>
         <li class="active">首页</li>
       </ol>
     </section>
+    <section class="content">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>150000000000 个</h3>
 
+              <p>订单</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+              <p>用户</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>44</h3>
+
+              <p>文章</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>65</h3>
+
+              <p>金额</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+      <!-- /.row -->
+      <!-- Main row -->
+
+      <!-- /.row (main row) -->
+
+    </section>
     <!-- Main content -->
 
     <!-- /.content -->
@@ -198,6 +264,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="/Public/admin/js/demo.js"></script>
 <script src="/Public/admin/js/admin.js"></script>
+<script src="/Public/admin/iCheck/icheck.min.js"></script>
 <script charset="utf-8" src="/Public/layer/layer.js"></script>
 </body>
 </html><!--/HEADER -->

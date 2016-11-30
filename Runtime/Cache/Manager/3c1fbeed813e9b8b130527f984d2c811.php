@@ -14,6 +14,7 @@
 
     <!-- Theme style -->
     <link rel="stylesheet" href="/Public/admin/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/Public/admin/iCheck/all.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/Public/admin/css/skins/_all-skins.min.css">
@@ -99,30 +100,7 @@
             </div>
         </nav>
     </header><!--/HEADER -->
-<!--/HEADER -->
-<style type="text/css">
-
-    .wminimize:hover {
-        text-decoration: none;
-    }
-
-    .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
-        padding: 8px;
-        line-height: 1.428571429;
-        vertical-align: top;
-        border-top: 0px solid #DDD;
-    }
-    .collapsed .expander{
-        background-image:url('/Public/admin/img/toggle-collapse-dark.png');
-    }
-    .expander .expander{
-        background-image:url('/Public/admin/img/toggle-expand-dark.png');
-    }
-
-</style>
-<!-- PAGE -->
-
-<!-- SIDEBAR -->
+<!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -170,135 +148,140 @@
     </section>
     <!-- /.sidebar -->
 </aside><!--/HEADER -->
-<!-- /SIDEBAR -->
-<div id="main-content">
-    <!-- SAMPLE BOX CONFIGURATION MODAL FORM-->
+<style type="text/css">
 
-    <!-- /SAMPLE BOX CONFIGURATION MODAL FORM-->
-    <div class="container">
+    .wminimize:hover {
+        text-decoration: none;
+    }
+
+    .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
+        padding: 8px;
+        line-height: 1.428571429;
+        vertical-align: top;
+        border-top: 0px solid #DDD;
+    }
+    .collapsed .expander{
+        background-image:url('/Public/admin/img/toggle-collapse-dark.png');
+    }
+    .expander .expander{
+        background-image:url('/Public/admin/img/toggle-expand-dark.png');
+    }
+
+</style>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <ol class="breadcrumb pull-left" >
+            <li><a href="<?php echo U('Index/index');?>"><i class="fa fa-dashboard"></i> 首页</a></li>
+            <li><a href="#">权限管理</a></li>
+            <li class="active">节点管理</li>
+
+        </ol>
+        <div class="form-group pull-right">
+            <a href="<?php echo U('Node/add');?>" class="btn btn-primary  ">增加节点 <i class="fa fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
         <div class="row">
-            <div id="content" class="col-lg-12">
-                <!-- PAGE HEADER-->
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="page-header">
-                            <!-- STYLER -->
-
-                            <!-- /STYLER -->
-                            <!-- BREADCRUMBS -->
-                            <ul class="breadcrumb">
-                                <li>
-                                    <i class="fa fa-home"></i>
-                                    <a href="<?php echo U('Index/index');?>">首页</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">权限管理</a>
-                                </li>
-                                <li>节点管理</li>
-                                <a href="<?php echo U('Node/add');?>" class="btn btn-primary pull-right ">增加节点 <i class="fa fa-arrow-right"></i></a>
-                            </ul>
-                            <div class="clearfix">
-
-                            </div>
-                            <!-- /BREADCRUMBS -->
-
-                        </div>
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">节点列表</h3>
                     </div>
-                </div>
-                <!-- /PAGE HEADER -->
-                <!-- SIMPLE STRIPED -->
-                <div class="row">
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th colspan="1" rowspan="1">编号</th>
+                                <th >Name</th>
+                                <th >Title</th>
+                                <th >状态</th>
+                                <th >操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val): $mod = ($i % 2 );++$i;?><tr  class="initialized parent collapsed expander" id="tr<?php echo ($val["id"]); ?>">
+                                    <td><span style="padding-left: 20px" <?php if($val["show"] == 1): ?>class="expander"<?php endif; ?>   onclick="tr_show(<?php echo ($val["id"]); ?>)"></span><span><?php echo ($val["id"]); ?></span></td>
+                                    <td ><?php echo ($val["name"]); ?></td>
+                                    <td ><?php echo ($val["title"]); ?></td>
+                                    <td >
+                                        <?php if($val["status"] == Manager\Model\AuthRuleModel::STATUS_ENABLE): ?><span class="label label-primary arrow-in adminstatus"><?php echo ($val["nodeStatus"]); ?></span>
+                                            <?php else: ?>
+                                            <span class="label label-danger arrow-in arrow-in-right adminstatus"><?php echo ($val["nodeStatus"]); ?></span><?php endif; ?>
+                                    </td>
+                                    <td >
 
-                    <div class="col-md-12">
-                        <!-- BOX -->
-                        <div class="box border primary">
-                            <div class="box-title">
-                                <h4><i class="fa fa-table"></i>节点列表</h4>
-                                <div class="tools">
-
-                                    <a href="javascript:;" class="collapse">
-                                        <i class="fa fa-chevron-up"></i>
-                                    </a>
-
-                                </div>
-                            </div>
-                            <div class="box-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th colspan="1" rowspan="1">编号</th>
-                                        <th >Name</th>
-                                        <th >Title</th>
-                                        <th >状态</th>
-                                        <th >操作</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val): $mod = ($i % 2 );++$i;?><tr  class="initialized parent collapsed expander" id="tr<?php echo ($val["id"]); ?>">
-                                            <td><span style="padding-left: 20px" <?php if($val["show"] == 1): ?>class="expander"<?php endif; ?>   onclick="tr_show(<?php echo ($val["id"]); ?>)"></span><span><?php echo ($val["id"]); ?></span></td>
-                                            <td ><?php echo ($val["name"]); ?></td>
-                                            <td ><?php echo ($val["title"]); ?></td>
-                                            <td >
-                                                <?php if($val["status"] == Manager\Model\AuthRuleModel::STATUS_ENABLE): ?><span class="label label-primary arrow-in adminstatus"><?php echo ($val["nodeStatus"]); ?></span>
+                                        <a href="<?php echo U('Node/edit',array('id'=>$val['id']));?>" class="fa fa-pencil tip" data-toggle="tooltip" data-placement="top" title="修改" ></a>&nbsp;
+                                        <?php if($val["status"] == Manager\Model\AuthRuleModel::STATUS_ENABLE): ?><a style="cursor: pointer;" class="fa fa-trash-o tip status" href="javascript:void(0);"data-toggle="tooltip" data-placement="top" title="禁用"></a>
+                                            <?php else: ?>
+                                            <a style="cursor: pointer;" class="fa fa-trash-o tip status" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="启用"></a><?php endif; ?>
+                                    </td>
+                                </tr>
+                                <?php if(is_array($val["child"])): $i = 0; $__LIST__ = $val["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr  class="initialized parent collapsed expander show<?php echo ($val["id"]); ?>" style="margin-left: 20px; display:none" id="tr<?php echo ($vo["id"]); ?>">
+                                        <td>
+                                            <span style="padding-left: 20px;margin-left: 15px;" <?php if($vo["show"] == 1): ?>class="expander"<?php endif; ?>  onclick="tr_show(<?php echo ($vo["id"]); ?>)"></span><span><?php echo ($vo["id"]); ?></span>
+                                        </td>
+                                        <td >&nbsp;&nbsp;├─<?php echo ($vo["name"]); ?></td>
+                                        <td >&nbsp;&nbsp;├─<?php echo ($vo["title"]); ?></td>
+                                        <td >
+                                            <?php if($vo["status"] == Manager\Model\AuthRuleModel::STATUS_ENABLE): ?><span class="label label-primary arrow-in adminstatus"><?php echo ($vo["nodeStatus"]); ?></span>
                                                 <?php else: ?>
-                                                    <span class="label label-danger arrow-in arrow-in-right adminstatus"><?php echo ($val["nodeStatus"]); ?></span><?php endif; ?>
-                                            </td>
+                                                <span class="label label-danger arrow-in arrow-in-right adminstatus"><?php echo ($vo["nodeStatus"]); ?></span><?php endif; ?>
+                                        </td>
+                                        <td >
+                                            <a href="<?php echo U('Node/edit',array('id'=>$vo['id']));?>" class="fa fa-pencil tip" data-toggle="tooltip" data-placement="top" title="修改" ></a>&nbsp;
+                                            <?php if($vo["status"] == Manager\Model\AuthRuleModel::STATUS_ENABLE): ?><a style="cursor: pointer;" class="fa fa-trash-o tip status" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="禁用"></a>
+                                                <?php else: ?>
+                                                <a style="cursor: pointer;" class="fa fa-trash-o tip status" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="启用"></a><?php endif; ?>
+
+                                        </td>
+                                    </tr>
+                                    <?php if(is_array($vo["child"])): $i = 0; $__LIST__ = $vo["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><tr  class="initialized parent collapsed expander show<?php echo ($vo["id"]); ?>" style="margin-left: 20px; display:none" id="tr<?php echo ($v["id"]); ?>">
+                                            <td><span style="padding-left: 20px;margin-left: 15px;" <?php if($v["show"] == 1): ?>class="expander"<?php endif; ?> onclick="tr_show(<?php echo ($v["id"]); ?>)""></span><span><?php echo ($v["id"]); ?></span></td>
+                                            <td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  └─ <?php echo ($v["name"]); ?></td>
+                                            <td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  └─ <?php echo ($v["title"]); ?></td>
                                             <td >
-                                                <a href="<?php echo U('Node/edit',array('id'=>$val['id']));?>" class="fa fa-pencil tip" data-original-title="修改" id="tr<?php echo ($val["id"]); ?>"></a>&nbsp;
-                                                <?php if($val["status"] == Manager\Model\AuthRuleModel::STATUS_ENABLE): ?><a style="cursor: pointer;" class="fa fa-trash-o tip status" href="javascript:void(0);" data-original-title="禁用"></a>
-                                                 <?php else: ?>
-                                                    <a style="cursor: pointer;" class="fa fa-trash-o tip status" href="javascript:void(0);" data-original-title="启用"></a><?php endif; ?>
-                                            </td>
-                                        </tr>
-                                        <?php if(is_array($val["child"])): $i = 0; $__LIST__ = $val["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr  class="initialized parent collapsed expander show<?php echo ($val["id"]); ?>" style="margin-left: 20px; display:none" id="tr<?php echo ($vo["id"]); ?>">
-                                                <td>
-                                                    <span style="padding-left: 20px;margin-left: 15px;" <?php if($vo["show"] == 1): ?>class="expander"<?php endif; ?>  onclick="tr_show(<?php echo ($vo["id"]); ?>)"></span><span><?php echo ($vo["id"]); ?></span>
-                                                </td>
-                                                <td >&nbsp;&nbsp;├─<?php echo ($vo["name"]); ?></td>
-                                                <td >&nbsp;&nbsp;├─<?php echo ($vo["title"]); ?></td>
-                                                <td >
-                                                    <?php if($vo["status"] == Manager\Model\AuthRuleModel::STATUS_ENABLE): ?><span class="label label-primary arrow-in adminstatus"><?php echo ($vo["nodeStatus"]); ?></span>
-                                                     <?php else: ?>
-                                                        <span class="label label-danger arrow-in arrow-in-right adminstatus"><?php echo ($vo["nodeStatus"]); ?></span><?php endif; ?>
-                                                </td>
-                                                <td >
-                                                    <a href="<?php echo U('Node/edit',array('id'=>$vo['id']));?>" class="fa fa-pencil tip" data-original-title="修改" id="tr<?php echo ($vo["id"]); ?>"></a>&nbsp;
-                                                    <?php if($vo["status"] == Manager\Model\AuthRuleModel::STATUS_ENABLE): ?><a style="cursor: pointer;" class="fa fa-trash-o tip status" href="javascript:void(0);" data-original-title="禁用"></a>
+                                                <?php if($v["status"] == Manager\Model\AuthRuleModel::STATUS_ENABLE): ?><span class="label label-primary arrow-in adminstatus"><?php echo ($v["nodeStatus"]); ?></span>
                                                     <?php else: ?>
-                                                        <a style="cursor: pointer;" class="fa fa-trash-o tip status" href="javascript:void(0);" data-original-title="启用"></a><?php endif; ?>
+                                                    <span class="label label-danger arrow-in arrow-in-right adminstatus"><?php echo ($v["nodeStatus"]); ?></span><?php endif; ?>
+                                            </td>
+                                            <td ><a href="<?php echo U('Node/edit',array('id'=>$v['id']));?>" class="fa fa-pencil tip" data-toggle="tooltip" data-placement="top" title="修改" ></a>&nbsp;
+                                                <?php if($v["status"] == Manager\Model\AuthRuleModel::STATUS_ENABLE): ?><a href="javascript:void(0);" style="cursor: pointer;" class="fa fa-trash-o tip status" data-toggle="tooltip" data-placement="top" title="禁用"></a>
+                                                    <?php else: ?>
+                                                    <a href="javascript:void(0);" style="cursor: pointer;" class="fa fa-trash-o tip status" data-toggle="tooltip" data-placement="top" title="启用"></a><?php endif; ?>
 
-                                                </td>
-                                            </tr>
-                                            <?php if(is_array($vo["child"])): $i = 0; $__LIST__ = $vo["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><tr  class="initialized parent collapsed expander show<?php echo ($vo["id"]); ?>" style="margin-left: 20px; display:none" id="tr<?php echo ($v["id"]); ?>">
-                                                    <td><span style="padding-left: 20px;margin-left: 15px;" <?php if($v["show"] == 1): ?>class="expander"<?php endif; ?> onclick="tr_show(<?php echo ($v["id"]); ?>)""></span><span><?php echo ($v["id"]); ?></span></td>
-                                                    <td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  └─ <?php echo ($v["name"]); ?></td>
-                                                    <td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  └─ <?php echo ($v["title"]); ?></td>
-                                                    <td >
-                                                        <?php if($v["status"] == Manager\Model\AuthRuleModel::STATUS_ENABLE): ?><span class="label label-primary arrow-in adminstatus"><?php echo ($v["nodeStatus"]); ?></span>
-                                                        <?php else: ?>
-                                                            <span class="label label-danger arrow-in arrow-in-right adminstatus"><?php echo ($v["nodeStatus"]); ?></span><?php endif; ?>
-                                                    </td>
-                                                    <td ><a href="<?php echo U('Node/edit',array('id'=>$v['id']));?>"
-                                                            class="fa fa-pencil tip" data-original-title="修改" id="tr<?php echo ($v["id"]); ?>"></a>&nbsp;
-                                                        <?php if($v["status"] == Manager\Model\AuthRuleModel::STATUS_ENABLE): ?><a href="javascript:void(0);" style="cursor: pointer;" class="fa fa-trash-o tip status" data-original-title="禁用"></a>
-                                                         <?php else: ?>
-                                                            <a href="javascript:void(0);" style="cursor: pointer;" class="fa fa-trash-o tip status" data-original-title="启用"></a><?php endif; ?>
-
-                                                    </td>
-                                                </tr><?php endforeach; endif; else: echo "" ;endif; endforeach; endif; else: echo "" ;endif; endforeach; endif; else: echo "" ;endif; ?>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                        </div>
-                        <!-- /BOX -->
+                                            </td>
+                                        </tr><?php endforeach; endif; else: echo "" ;endif; endforeach; endif; else: echo "" ;endif; endforeach; endif; else: echo "" ;endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <ul class="pagination pagination-sm no-margin pull-right">
+                            <?php echo ($data["page"]); ?>
+                        </ul>
                     </div>
                 </div>
+                <!-- /.box -->
 
-                <!-- /BORDERED HOVER -->
+
+                <!-- /.box -->
             </div>
-            <!--/HEADER -->
-            <footer class="main-footer">
+            <!-- /.col -->
+
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<footer class="main-footer">
 	<div class="pull-right hidden-xs">
 		<b>Version</b> 2.3.3
 	</div>
@@ -328,52 +311,53 @@
 <!-- AdminLTE for demo purposes -->
 <script src="/Public/admin/js/demo.js"></script>
 <script src="/Public/admin/js/admin.js"></script>
+<script src="/Public/admin/iCheck/icheck.min.js"></script>
 <script charset="utf-8" src="/Public/layer/layer.js"></script>
 </body>
-</html>
-            <script type="text/javascript">
-                $(function(){
-                    $(".status").click(function(){
-                        var parent=$(this).parent().parent()
-                        var id=parent.find('td:first span').eq(1).html();
-                        var msg=$(this).attr("data-original-title");
-                        if(msg=="启用") {
-                            status="<?=Manager\Model\AuthRuleModel::STATUS_DISABLE?>";
-                        }else {
-                            status="<?=Manager\Model\AuthRuleModel::STATUS_ENABLE?>";
-                        }
-                        layer.confirm('你确定要'+msg+"吗？",{
-                            btn:[ '确认','取消' ] //按钮
-                        },function(){
-                            $.post("<?php echo U('Node/del');?>",{ "id":id,"status":status },function( response ){
-                                if(response.error==100) {
-                                    throwExc(response.message);
-                                    return false;
-                                }else if(response.error==200) {
-                                    showSucc(response.message);
-                                    setTimeout("location.reload()",1000);
-                                }else {
-                                    throwExc(response.info);
-                                    return false;
-                                }
-                            },"json");
+</html><!--/HEADER -->
+<script type="text/javascript">
+    $(function(){
+        $(".status").click(function(){
+            var parent=$(this).parent().parent()
+            var id=parent.find('td:first span').eq(1).html();
+            var msg=$(this).attr("data-original-title");
+            if(msg=="启用") {
+                status="<?=Manager\Model\AuthRuleModel::STATUS_DISABLE?>";
+            }else {
+                status="<?=Manager\Model\AuthRuleModel::STATUS_ENABLE?>";
+            }
+            layer.confirm('你确定要'+msg+"吗？",{
+                btn:[ '确认','取消' ] //按钮
+            },function(){
+                $.post("<?php echo U('Node/del');?>",{ "id":id,"status":status },function( response ){
+                    if(response.error==100) {
+                        throwExc(response.message);
+                        return false;
+                    }else if(response.error==200) {
+                        showSucc(response.message);
+                        setTimeout("location.reload()",1000);
+                    }else {
+                        throwExc(response.info);
+                        return false;
+                    }
+                },"json");
 
-                        },function(){
-                            layer.msg('取消成功',{
-                                time:800, //20s后自动关闭
-                            });
-                        });
+            },function(){
+                layer.msg('取消成功',{
+                    time:800, //20s后自动关闭
+                });
+            });
 
-                    });
-                })
-                function load(){
-                    location.reload() ;
-                }
+        });
+    })
+    function load(){
+        location.reload() ;
+    }
 
 
-                function tr_show(data){
-                    var show= $('.show'+data);
-                    $("#tr"+data).toggleClass('expander');
-                    show.toggle();
-                }
-            </script>
+    function tr_show(data){
+        var show= $('.show'+data);
+        $("#tr"+data).toggleClass('expander');
+        show.toggle();
+    }
+</script>

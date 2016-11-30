@@ -14,6 +14,7 @@
 
     <!-- Theme style -->
     <link rel="stylesheet" href="/Public/admin/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/Public/admin/iCheck/all.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/Public/admin/css/skins/_all-skins.min.css">
@@ -172,8 +173,8 @@
                         <h3 class="box-title">角色列表</h3>
                     </div>
                     <!-- /.box-header -->
-                    <div class="box-body">
-                        <table class="table table-bordered">
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
                             <tr>
                                 <th>ID</th>
                                 <th>名称</th>
@@ -258,6 +259,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="/Public/admin/js/demo.js"></script>
 <script src="/Public/admin/js/admin.js"></script>
+<script src="/Public/admin/iCheck/icheck.min.js"></script>
 <script charset="utf-8" src="/Public/layer/layer.js"></script>
 </body>
 </html><!--/HEADER -->
