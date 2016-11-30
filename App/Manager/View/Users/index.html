@@ -1,0 +1,202 @@
+<include file="Public/header"/><!--/HEADER -->
+<!-- Left side column. contains the logo and sidebar -->
+<include file="Public/menu"/><!--/HEADER -->
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <ol class="breadcrumb pull-left" >
+            <li><a href="{:U('Index/index')}"><i class="fa fa-dashboard"></i> 首页</a></li>
+            <li><a href="#">用户管理</a></li>
+            <li class="active">用户管理</li>
+
+        </ol>
+        <div class="form-group pull-right">
+            <a href="{:U('AdminUser/add')}" class="btn btn-primary  ">增加管理员 <i class="fa fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">用户列表</h3>
+                    </div>
+                    <div>
+                        <form class="form-horizontal" method="get">
+                            <input type="hidden" name="m" value="Users">
+                            <input type="hidden" name="c" value="index">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label">用户名：</label>
+
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" name="username" id="username" value="{$Think.get.username}"
+                                                placeholder="用户名/手机号/邮箱">
+                                    </div>
+
+                                    <label class="col-sm-1 control-label">开始时间：</label>
+
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" name="startTime" id="startTime" value="{$Think.get.startTime}"
+                                                placeholder="开始时间">
+                                    </div>
+                                    <label class="col-sm-1 control-label">结束时间：</label>
+
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" name="endTime" id="endTime" value="{$Think.get.endTime}"
+                                                placeholder="结束时间">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button type="submit" class="btn btn-primary  " >提交</button>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+
+                            <!-- /.box-body -->
+
+                            <!-- /.box-footer -->
+
+                        <table class="table table-hover">
+                            <tr>
+                                <th>ID</th>
+                                <th>用户名称</th>
+                                <th>邮箱</th>
+                                <th>手机号</th>
+                                <th>真实姓名</th>
+                                <th>积分</th>
+                                <th>状态</th>
+                                <th class="hidden-480">创建时间</th>
+                                <th class="hidden-480">更新时间</th>
+                                <th>操作</th>
+                            </tr>
+                            <volist name="data.list" id="v">
+                                <tr>
+                                    <td>{$v.id}</td>
+                                    <td>{$v.username}</td>
+                                    <td>{$v.email}</td>
+                                    <td>{$v.phone}</td>
+                                    <td>{$v.realname}</td>
+                                    <td>{$v.score}</td>
+                                    <td>
+                                        <if condition="$v.status eq Manager\Model\UsersModel::STATUS_ENABLE">
+                                            <span class="label label-primary ">{$v.statusName}</span>
+
+                                         <else/>
+                                            <span class="label  label-danger  ">{$v.statusName}</span>
+                                        </if>
+                                    </td>
+
+                                    <td class="hidden-480">{$v.create_time}</td>
+                                    <td class="hidden-480">{$v.update_time}</td>
+                                    <td>
+
+                                        <if condition="$v.status eq Manager\Model\UsersModel::STATUS_ENABLE">
+                                            <a href="javascript:;" class="fa fa-trash-o tip checkStatus" data-toggle="tooltip" data-placement="top" title="禁用" > </a>
+                                         <else/>
+                                            <a href="javascript:;" class="fa fa-trash-o tip checkStatus" data-toggle="tooltip" data-placement="top" title="启用" > </a>
+                                        </if>
+                                     </td>
+                                </tr>
+                            </volist>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <ul class="pagination pagination-sm no-margin pull-right">
+                            {$data.page}
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.box -->
+
+
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<include file="Public/footer"/><!--/HEADER -->
+<script type="text/javascript">
+    $(function () {
+        // 时间控件
+        $('#startTime').datetimepicker({
+            format: 'yyyy-mm-dd',
+            language: "zh-CN",
+            autoclose: true,
+            minView: 0,
+            startView: 2,
+            minView: 2,
+        });
+        $('#endTime').datetimepicker({
+            format: 'yyyy-mm-dd',
+            language: "zh-CN",
+            autoclose: true,
+            minView: 0,
+            startView: 2,
+            minView: 2,
+        });
+    });
+</script>
+<script type="text/javascript">
+
+    $(".checkStatus").click(function(){
+        var id=$(this).parent().parent().find("td:eq(0)").html();
+        var msg=$(this).attr("data-original-title");
+        var status;
+        if(msg=='禁用') {
+            status="<?=Manager\Model\UsersModel::STATUS_ENABLE?>";
+        }else {
+            status="<?=Manager\Model\UsersModel::STATUS_DISABLE?>";
+        }
+        layer.confirm('你确定要'+msg+"吗？", {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            $.ajax({
+                url: "{:U('Users/del')}",
+                type: "POST",
+                data :{ "id":id,"status":status },
+                dataType: "json",
+                success:function(response){
+                    if(response.error==100) {
+                        throwExc(response.message);
+                        return false;
+                    }else if(response.error==200){
+                        showSucc(response.message);
+                        setTimeout("load()",1000);
+                    }
+                },
+                error:function(response){
+                    throwExc(response.responseText);
+                    return false;
+                }
+            })
+        }, function(){
+            layer.msg('取消操作', {
+                time: 800, //20s后自动关闭
+            });
+        });
+
+    });
+
+    function load(){
+        location.reload() ;
+    }
+</script>
