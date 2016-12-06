@@ -1,0 +1,88 @@
+<include file="Public/header"/><!--/HEADER -->
+<!-- Left side column. contains the logo and sidebar -->
+<include file="Public/menu"/><!--/HEADER -->
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <ol class="breadcrumb pull-left" >
+            <li><a href="{:U('Index/index')}"><i class="fa fa-dashboard"></i> 首页</a></li>
+            <li><a href="#">用户管理</a></li>
+            <li class="active">收货地址</li>
+
+        </ol>
+        <div class="form-group pull-right">
+            <a href="{:U('Users/index')}" class="btn btn-primary  "><i class="fa fa-arrow-left"></i>    返回 </a>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">收货地址列表</h3>
+                    </div>
+                    <div>
+
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+
+                            <!-- /.box-body -->
+
+                            <!-- /.box-footer -->
+
+                        <table class="table table-hover">
+                            <tr>
+                                <th>ID</th>
+                                <th>收货人</th>
+                                <th>地址</th>
+                                <th>电话</th>
+                                <th>手机</th>
+                                <th>邮箱</th>
+                                <th class="hidden-480">创建时间</th>
+                                <th class="hidden-480">更新时间</th>
+                            </tr>
+                            <volist name="userAddress" id="v">
+                                <tr>
+                                    <td>{$v.address_id}</td>
+                                    <td>{$v.consignee}</td>
+                                    <td>
+                                        <p>{$v.country_name}&nbsp;{$v.province_name}&nbsp;{$v.city_name}&nbsp;{$v.district_name}</p>
+                                        <p>{$v.address}</p>
+
+                                    </td>
+                                    <td>{$v.tel}</td>
+                                    <td>{$v.mobile}</td>
+                                    <td>{$v.email}</td>
+
+                                    <td class="hidden-480">{$v.create_time}</td>
+                                    <td class="hidden-480">{$v.update_time}</td>
+
+
+                                </tr>
+                            </volist>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+
+                </div>
+                <!-- /.box -->
+
+
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<include file="Public/footer"/><!--/HEADER -->

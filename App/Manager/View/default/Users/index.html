@@ -12,9 +12,9 @@
             <li class="active">用户管理</li>
 
         </ol>
-        <div class="form-group pull-right">
-            <a href="{:U('AdminUser/add')}" class="btn btn-primary  ">增加管理员 <i class="fa fa-arrow-right"></i></a>
-        </div>
+        <!--<div class="form-group pull-right">-->
+            <!--<a href="{:U('AdminUser/add')}" class="btn btn-primary  ">增加管理员 <i class="fa fa-arrow-right"></i></a>-->
+        <!--</div>-->
     </section>
 
     <!-- Main content -->
@@ -35,7 +35,7 @@
 
                                     <div class="col-sm-2">
                                         <input type="text" class="form-control" name="username" id="username" value="{$Think.get.username}"
-                                                placeholder="用户名/手机号/邮箱">
+                                                placeholder="用户名">
                                     </div>
 
                                     <label class="col-sm-1 control-label">开始时间：</label>
@@ -72,12 +72,14 @@
                                 <th>ID</th>
                                 <th>用户名称</th>
                                 <th>邮箱</th>
-                                <th>手机号</th>
-                                <th>真实姓名</th>
-                                <th>积分</th>
-                                <th>状态</th>
+                                <th>现有资金</th>
+                                <th>冻结资金</th>
+                                <th>消费积分</th>
+                                <th>等级积分</th>
+
                                 <th class="hidden-480">创建时间</th>
                                 <th class="hidden-480">更新时间</th>
+                                <th>状态</th>
                                 <th>操作</th>
                             </tr>
                             <volist name="data.list" id="v">
@@ -85,23 +87,27 @@
                                     <td>{$v.id}</td>
                                     <td>{$v.username}</td>
                                     <td>{$v.email}</td>
-                                    <td>{$v.phone}</td>
-                                    <td>{$v.realname}</td>
-                                    <td>{$v.score}</td>
-                                    <td>
-                                        <if condition="$v.status eq Manager\Model\UsersModel::STATUS_ENABLE">
-                                            <span class="label label-primary ">{$v.statusName}</span>
+                                    <td>{$v.user_money}</td>
+                                    <td>{$v.frozen_money}</td>
+                                    <td>{$v.pay_points}</td>
+                                    <td>{$v.rank_points}</td>
 
-                                         <else/>
-                                            <span class="label  label-danger  ">{$v.statusName}</span>
-                                        </if>
-                                    </td>
 
                                     <td class="hidden-480">{$v.create_time}</td>
                                     <td class="hidden-480">{$v.update_time}</td>
                                     <td>
+                                        <if condition="$v.status eq Common\Model\UserModel::STATUS_ENABLE">
+                                            <span class="label label-primary ">{$v.statusName}</span>
 
-                                        <if condition="$v.status eq Manager\Model\UsersModel::STATUS_ENABLE">
+                                            <else/>
+                                            <span class="label  label-danger  ">{$v.statusName}</span>
+                                        </if>
+                                    </td>
+                                    <td>
+                                        <a href="{:U('Users/receiptAddress',array('id'=>$v['id']))}" class="fa  fa-bullseye tip " data-toggle="tooltip" data-placement="top" title="收货地址" > </a>
+                                        <a href="{:U('Users/accountDetails',array('id'=>$v['id']))}" class="fa fa-reorder tip " data-toggle="tooltip" data-placement="top" title="账目明细" > </a>
+
+                                        <if condition="$v.status eq Common\Model\UserModel::STATUS_ENABLE">
                                             <a href="javascript:;" class="fa fa-trash-o tip checkStatus" data-toggle="tooltip" data-placement="top" title="禁用" > </a>
                                          <else/>
                                             <a href="javascript:;" class="fa fa-trash-o tip checkStatus" data-toggle="tooltip" data-placement="top" title="启用" > </a>
@@ -162,9 +168,9 @@
         var msg=$(this).attr("data-original-title");
         var status;
         if(msg=='禁用') {
-            status="<?=Manager\Model\UsersModel::STATUS_ENABLE?>";
+            status="<?=Common\Model\UserModel::STATUS_ENABLE?>";
         }else {
-            status="<?=Manager\Model\UsersModel::STATUS_DISABLE?>";
+            status="<?=Common\Model\UserModel::STATUS_DISABLE?>";
         }
         layer.confirm('你确定要'+msg+"吗？", {
             btn: ['确定','取消'] //按钮

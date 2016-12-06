@@ -1,0 +1,82 @@
+<include file="Public/header"/><!--/HEADER -->
+<!-- Left side column. contains the logo and sidebar -->
+<include file="Public/menu"/><!--/HEADER -->
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <ol class="breadcrumb pull-left" >
+            <li><a href="{:U('Index/index')}"><i class="fa fa-dashboard"></i> 首页</a></li>
+            <li><a href="#">用户管理</a></li>
+            <li class="active">账目明细</li>
+
+        </ol>
+        <div class="form-group pull-right">
+            <a href="{:U('Users/index')}" class="btn btn-primary  "><i class="fa fa-arrow-left"></i>    返回 </a>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">账目明细</h3>
+                    </div>
+                    <div>
+
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+
+                            <!-- /.box-body -->
+
+                            <!-- /.box-footer -->
+
+                        <table class="table table-hover">
+                            <tr>
+                                <th class="hidden-480">创建时间</th>
+                                <th>变动原因</th>
+                                <th>可用帐户</th>
+                                <th>冻结资金</th>
+                                <th>等级积分</th>
+                                <th>消费积分</th>
+                            </tr>
+                            <volist name="data.list" id="v">
+                                <tr>
+                                    <td>{$v.change_time}</td>
+                                    <td>{$v.change_desc}</td>
+                                    <td>{$v.user_money}</td>
+                                    <td>{$v.frozen_money}</td>
+                                    <td>{$v.rank_points}</td>
+                                    <td>{$v.pay_points}</td>
+                                </tr>
+                            </volist>
+                        </table>
+                    </div>
+                    <div class="box-footer clearfix">
+                        <ul class="pagination pagination-sm no-margin pull-right">
+                            {$data.page}
+                        </ul>
+                    </div>
+                    <!-- /.box-body -->
+
+                </div>
+                <!-- /.box -->
+
+
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<include file="Public/footer"/><!--/HEADER -->
