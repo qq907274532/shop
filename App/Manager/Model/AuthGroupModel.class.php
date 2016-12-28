@@ -19,5 +19,22 @@ class AuthGroupModel extends Model {
 
    );
 
+    /**
+     * @param $id
+     * @return mixed
+     */
+	public function getAuthGroupInfoById($id){
+	    return $this->where(['id'=>$id])->find();
+    }
+
+    /**
+     * @param array $order
+     * @param array $where
+     * @return mixed
+     */
+    public function getAuthGroupList($order=['id'=>'desc'],$where=[]){
+	    return   $this->where($where)->order($order)->select();
+    }
+
 }
 ?>

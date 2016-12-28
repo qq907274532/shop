@@ -26,5 +26,21 @@ class AuthRuleModel extends Model {
       array('url','require','url必须填写'), //默认情况下用正则进行验证 
    );
 
+    /**
+     * @param array $order
+     * @return mixed
+     */
+	public function getAuthRuleList($order=['id'=>'desc'],$where=[]){
+	   return $this->where($where)->order($order)->select();
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function getAuthRuleInfoById($id){
+	    return $this->where(['id'=>$id])->find();
+    }
+
 }
 ?>

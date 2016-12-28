@@ -13,12 +13,13 @@
         public function _initialize()
         {
 
-            $this->model = D("AdminUser");
+            
         }
 
         public function index()
         {
             if (IS_POST) {
+                $this->model = new AdminUserModel();
                 $error=100;
                 if (empty($verify = trim(I('verify')))) {
                     $this->ajaxReturn(array('error'=>$error,'message'=>'验证码不能为空'));

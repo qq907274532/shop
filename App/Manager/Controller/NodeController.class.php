@@ -12,7 +12,7 @@
         public function __construct()
         {
             parent::__construct();
-            $this->model = D('AuthRule');
+            $this->model = new AuthRuleModel();
         }
 
         public function index()
@@ -47,7 +47,7 @@
 
             } else {
                 $this->menu=AuthRuleModel::$MENU_MAP;
-                $list = $this->model->where(array('status' => AuthRuleModel::STATUS_ENABLE))->order(array('sort', 'id' => 'desc'))->select();
+                $list = $this->model->getAuthRuleList(['sort', 'id' => 'desc'],['status' => AuthRuleModel::STATUS_ENABLE]);
                 $this->assign('list', node_merges($list));
                 $this->display();
             }
@@ -85,8 +85,8 @@
                 }
 
                 $this->menu=AuthRuleModel::$MENU_MAP;
-                $this->info = $this->model->where(array('id' => $id))->find();
-                $list = $this->model->where(array('status' => AuthRuleModel::STATUS_ENABLE))->order(array('sort', 'id' => 'desc'))->select();
+                $this->info = $this->model->getAuthRuleInfoById($id);
+                $list = $this->model->getAuthRuleList(['sort', 'id' => 'desc'],['status' => AuthRuleModel::STATUS_ENABLE]);
                 $this->assign('list', node_merges($list));
                 $this->display();
             }

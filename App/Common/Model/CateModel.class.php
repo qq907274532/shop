@@ -1,5 +1,5 @@
 <?php
-namespace Manager\Model;
+namespace Common\Model;
 use Think\Model;
 /*****
  *		Node模型

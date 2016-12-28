@@ -50,5 +50,13 @@ class AdminUserModel extends Model {
 		return $cate;
 	}
 
+    /**
+     * @param $id
+     * @return mixed
+     */
+	public function getAdminUserInfoById($id){
+	    return $this->where(['id'=>$id])->find();
+    }
+
 }
 ?>
