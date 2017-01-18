@@ -11,7 +11,7 @@
  Target Server Version : 50717
  File Encoding         : utf-8
 
- Date: 01/19/2017 00:33:09 AM
+ Date: 01/19/2017 00:37:29 AM
 */
 
 SET NAMES utf8;
@@ -230,10 +230,10 @@ CREATE TABLE `hx_booking_goods` (
   `goods_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `goods_desc` varchar(255) NOT NULL DEFAULT '',
   `goods_number` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `booking_time` int(10) unsigned NOT NULL DEFAULT '0',
+  `booking_time` datetime DEFAULT NULL,
   `is_dispose` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `dispose_user` varchar(30) NOT NULL DEFAULT '',
-  `dispose_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `dispose_time` datetime DEFAULT NULL,
   `dispose_note` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`rec_id`),
   KEY `user_id` (`user_id`)
