@@ -11,7 +11,7 @@
  Target Server Version : 50717
  File Encoding         : utf-8
 
- Date: 01/19/2017 00:43:11 AM
+ Date: 01/19/2017 00:45:23 AM
 */
 
 SET NAMES utf8;
@@ -572,7 +572,7 @@ CREATE TABLE `hx_user` (
   `username` varchar(60) NOT NULL DEFAULT '' COMMENT '用户名',
   `password` varchar(32) NOT NULL DEFAULT '' COMMENT '密码',
   `sex` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '性别',
-  `birthday` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `birthday` datetime DEFAULT NULL,
   `user_money` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '用户现有资金',
   `frozen_money` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '用户冻结资金',
   `pay_points` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '消费积分',
