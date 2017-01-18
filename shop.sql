@@ -11,7 +11,7 @@
  Target Server Version : 50717
  File Encoding         : utf-8
 
- Date: 01/19/2017 00:45:23 AM
+ Date: 01/19/2017 00:48:28 AM
 */
 
 SET NAMES utf8;
@@ -670,7 +670,7 @@ CREATE TABLE `hx_users` (
   `user_status` int(11) NOT NULL DEFAULT '1' COMMENT '用户状态 0：禁用； 1：正常 ；2：未验证',
   `score` int(11) NOT NULL DEFAULT '0' COMMENT '用户积分',
   `last_login_time` datetime DEFAULT NULL,
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_login_key` (`user_login`),
   KEY `user_nicename` (`user_nicename`)
