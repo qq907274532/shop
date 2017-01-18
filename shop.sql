@@ -11,7 +11,7 @@
  Target Server Version : 50717
  File Encoding         : utf-8
 
- Date: 01/19/2017 00:39:44 AM
+ Date: 01/19/2017 00:43:11 AM
 */
 
 SET NAMES utf8;
@@ -410,7 +410,7 @@ CREATE TABLE `hx_order_action` (
   `action_user` varchar(30) NOT NULL DEFAULT '' COMMENT '操作该次的人员',
   `order_status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '作何操作0,未确认, 1已确认; 2已取消; 3无效; 4退货',
   `action_note` varchar(255) NOT NULL DEFAULT '' COMMENT '操作备注',
-  `log_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '操作时间',
+  `log_time` datetime DEFAULT NULL COMMENT '操作时间',
   PRIMARY KEY (`action_id`),
   KEY `order_id` (`order_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='订单操作记录表';
