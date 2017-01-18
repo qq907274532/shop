@@ -11,7 +11,7 @@
  Target Server Version : 50717
  File Encoding         : utf-8
 
- Date: 01/19/2017 00:37:29 AM
+ Date: 01/19/2017 00:39:44 AM
 */
 
 SET NAMES utf8;
@@ -262,7 +262,7 @@ CREATE TABLE `hx_comments` (
   `uid` int(11) NOT NULL DEFAULT '0' COMMENT '发表评论的用户id',
   `full_name` varchar(50) DEFAULT NULL COMMENT '评论者昵称',
   `email` varchar(255) DEFAULT NULL COMMENT '评论者邮箱',
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` datetime DEFAULT NULL,
   `content` text NOT NULL COMMENT '评论内容',
   `parentid` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '被回复的评论id',
   `aid` int(11) DEFAULT NULL COMMENT '评论内容id',
