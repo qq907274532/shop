@@ -7,7 +7,7 @@ return array(
     'DB_PWD' => 'root',
     'DB_PORT' => '3306',
     'DB_PREFIX' => 'hx_',
-	'URL_MODEL'=>'1',
+	'URL_MODEL'=>'2',
 	'COMM_TITLE'=>'易名轩管理系统',
 	'PAGE_NUMBER'=>'15',
 	/* 系统变量名称设置 */
