@@ -11,6 +11,7 @@
         public function __construct()
         {
 
+            
             parent::__construct();
             if (!isset($_SESSION['id'])) {
                 $this->redirect('Login/index');
