@@ -1,24 +1,22 @@
 /*
- Navicat Premium Data Transfer
+Navicat MySQL Data Transfer
 
- Source Server         : web
- Source Server Type    : MySQL
- Source Server Version : 50717
- Source Host           : localhost
- Source Database       : shop
+Source Server         : web
+Source Server Version : 50540
+Source Host           : localhost:3306
+Source Database       : shop
 
- Target Server Type    : MySQL
- Target Server Version : 50717
- File Encoding         : utf-8
+Target Server Type    : MYSQL
+Target Server Version : 50540
+File Encoding         : 65001
 
- Date: 01/19/2017 00:48:28 AM
+Date: 2017-03-06 14:03:07
 */
 
-SET NAMES utf8;
-SET FOREIGN_KEY_CHECKS = 0;
+SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
---  Table structure for `hx_account_log`
+-- Table structure for hx_account_log
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_account_log`;
 CREATE TABLE `hx_account_log` (
@@ -32,18 +30,52 @@ CREATE TABLE `hx_account_log` (
   `change_desc` varchar(255) NOT NULL COMMENT '该笔操作的备注',
   `change_type` tinyint(3) unsigned NOT NULL COMMENT '操作类型,0为充值,1,为提现,2为管理员调节,99为其它类型',
   PRIMARY KEY (`log_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户账目日志表';
+  KEY `user_id` (`user_id`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='用户账目日志表';
 
 -- ----------------------------
---  Records of `hx_account_log`
+-- Records of hx_account_log
 -- ----------------------------
-BEGIN;
-INSERT INTO `hx_account_log` VALUES ('1', '5', '1100000.00', '0.00', '0', '0', '2016-12-06 17:11:24', '11', '2'), ('2', '3', '400000.00', '0.00', '0', '0', '2016-12-06 17:11:24', '21312', '2'), ('3', '2', '300000.00', '0.00', '0', '0', '2016-12-06 17:11:24', '300000', '2'), ('4', '1', '50000.00', '0.00', '0', '0', '2016-12-06 17:11:24', '50', '2'), ('5', '5', '0.00', '10000.00', '0', '0', '2016-12-06 17:11:24', '32', '2'), ('6', '1', '-400.00', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009051298180', '99'), ('7', '1', '-975.00', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009051255518', '99'), ('8', '1', '0.00', '0.00', '960', '960', '2016-12-06 17:11:24', '订单 2009051255518 赠送的积分', '99'), ('9', '1', '0.00', '0.00', '385', '385', '2016-12-06 17:11:24', '订单 2009051298180 赠送的积分', '99'), ('10', '1', '-2310.00', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009051267570', '99'), ('11', '1', '0.00', '0.00', '2300', '2300', '2016-12-06 17:11:24', '订单 2009051267570 赠送的积分', '99'), ('12', '1', '-5989.00', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009051230249', '99'), ('13', '1', '-8610.00', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009051276258', '99'), ('14', '1', '0.00', '0.00', '0', '-1', '2016-12-06 17:11:24', '参加夺宝奇兵夺宝奇兵之夏新N7 ', '99'), ('15', '1', '0.00', '0.00', '0', '-1', '2016-12-06 17:11:24', '参加夺宝奇兵夺宝奇兵之诺基亚N96 ', '99'), ('16', '1', '0.00', '0.00', '0', '100000', '2016-12-06 17:11:24', '奖励', '2'), ('17', '1', '-10.00', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009051268194', '99'), ('18', '1', '0.00', '0.00', '0', '-17000', '2016-12-06 17:11:24', '支付订单 2009051268194', '99'), ('19', '1', '0.00', '0.00', '-960', '-960', '2016-12-06 17:11:24', '由于退货或未发货操作，退回订单 2009051255518 赠送的积分', '99'), ('20', '1', '975.00', '0.00', '0', '0', '2016-12-06 17:11:24', '由于取消、无效或退货操作，退回支付订单 2009051255518 时使用的预付款', '99'), ('21', '1', '0.00', '0.00', '960', '960', '2016-12-06 17:11:24', '订单 2009051719232 赠送的积分', '99'), ('22', '3', '-1000.00', '0.00', '0', '0', '2016-12-06 17:11:24', '追加使用余额支付订单：2009051227085', '99'), ('23', '1', '-13806.60', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009052224892', '99'), ('24', '1', '0.00', '0.00', '14045', '14045', '2016-12-06 17:11:24', '订单 2009052224892 赠送的积分', '99'), ('25', '1', '0.00', '0.00', '-2300', '-2300', '2016-12-06 17:11:24', '由于退货或未发货操作，退回订单 2009051267570 赠送的积分', '99'), ('26', '1', '2310.00', '0.00', '0', '0', '2016-12-06 17:11:24', '由于取消、无效或退货操作，退回支付订单 2009051267570 时使用的预付款', '99'), ('27', '1', '0.00', '0.00', '17044', '17044', '2016-12-06 17:11:24', '订单 2009061585887 赠送的积分', '99'), ('28', '1', '17054.00', '0.00', '0', '0', '2016-12-06 17:11:24', '1', '99'), ('29', '1', '0.00', '0.00', '-17044', '-17044', '2016-12-06 17:11:24', '由于退货或未发货操作，退回订单 2009061585887 赠送的积分', '99'), ('30', '1', '-3196.30', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009061525429', '99'), ('31', '1', '-1910.00', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009061503335', '99'), ('32', '1', '0.00', '0.00', '1900', '1900', '2016-12-06 17:11:24', '订单 2009061503335 赠送的积分', '99'), ('33', '1', '0.00', '0.00', '-1900', '-1900', '2016-12-06 17:11:24', '由于退货或未发货操作，退回订单 2009061503335 赠送的积分', '99'), ('34', '1', '1910.00', '0.00', '0', '0', '2016-12-06 17:11:24', '由于取消、无效或退货操作，退回支付订单 2009061503335 时使用的预付款', '99'), ('35', '1', '-500.00', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009061510313', '99'), ('37', '1', '-111.00', '0.00', '0', '0', '2016-12-08 22:17:27', '', '2'), ('38', '1', '-1111.00', '0.00', '0', '0', '2016-12-12 16:36:03', '', '2');
-COMMIT;
+INSERT INTO `hx_account_log` VALUES ('1', '5', '1100000.00', '0.00', '0', '0', '2016-12-06 17:11:24', '11', '2');
+INSERT INTO `hx_account_log` VALUES ('2', '3', '400000.00', '0.00', '0', '0', '2016-12-06 17:11:24', '21312', '2');
+INSERT INTO `hx_account_log` VALUES ('3', '2', '300000.00', '0.00', '0', '0', '2016-12-06 17:11:24', '300000', '2');
+INSERT INTO `hx_account_log` VALUES ('4', '1', '50000.00', '0.00', '0', '0', '2016-12-06 17:11:24', '50', '2');
+INSERT INTO `hx_account_log` VALUES ('5', '5', '0.00', '10000.00', '0', '0', '2016-12-06 17:11:24', '32', '2');
+INSERT INTO `hx_account_log` VALUES ('6', '1', '-400.00', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009051298180', '99');
+INSERT INTO `hx_account_log` VALUES ('7', '1', '-975.00', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009051255518', '99');
+INSERT INTO `hx_account_log` VALUES ('8', '1', '0.00', '0.00', '960', '960', '2016-12-06 17:11:24', '订单 2009051255518 赠送的积分', '99');
+INSERT INTO `hx_account_log` VALUES ('9', '1', '0.00', '0.00', '385', '385', '2016-12-06 17:11:24', '订单 2009051298180 赠送的积分', '99');
+INSERT INTO `hx_account_log` VALUES ('10', '1', '-2310.00', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009051267570', '99');
+INSERT INTO `hx_account_log` VALUES ('11', '1', '0.00', '0.00', '2300', '2300', '2016-12-06 17:11:24', '订单 2009051267570 赠送的积分', '99');
+INSERT INTO `hx_account_log` VALUES ('12', '1', '-5989.00', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009051230249', '99');
+INSERT INTO `hx_account_log` VALUES ('13', '1', '-8610.00', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009051276258', '99');
+INSERT INTO `hx_account_log` VALUES ('14', '1', '0.00', '0.00', '0', '-1', '2016-12-06 17:11:24', '参加夺宝奇兵夺宝奇兵之夏新N7 ', '99');
+INSERT INTO `hx_account_log` VALUES ('15', '1', '0.00', '0.00', '0', '-1', '2016-12-06 17:11:24', '参加夺宝奇兵夺宝奇兵之诺基亚N96 ', '99');
+INSERT INTO `hx_account_log` VALUES ('16', '1', '0.00', '0.00', '0', '100000', '2016-12-06 17:11:24', '奖励', '2');
+INSERT INTO `hx_account_log` VALUES ('17', '1', '-10.00', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009051268194', '99');
+INSERT INTO `hx_account_log` VALUES ('18', '1', '0.00', '0.00', '0', '-17000', '2016-12-06 17:11:24', '支付订单 2009051268194', '99');
+INSERT INTO `hx_account_log` VALUES ('19', '1', '0.00', '0.00', '-960', '-960', '2016-12-06 17:11:24', '由于退货或未发货操作，退回订单 2009051255518 赠送的积分', '99');
+INSERT INTO `hx_account_log` VALUES ('20', '1', '975.00', '0.00', '0', '0', '2016-12-06 17:11:24', '由于取消、无效或退货操作，退回支付订单 2009051255518 时使用的预付款', '99');
+INSERT INTO `hx_account_log` VALUES ('21', '1', '0.00', '0.00', '960', '960', '2016-12-06 17:11:24', '订单 2009051719232 赠送的积分', '99');
+INSERT INTO `hx_account_log` VALUES ('22', '3', '-1000.00', '0.00', '0', '0', '2016-12-06 17:11:24', '追加使用余额支付订单：2009051227085', '99');
+INSERT INTO `hx_account_log` VALUES ('23', '1', '-13806.60', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009052224892', '99');
+INSERT INTO `hx_account_log` VALUES ('24', '1', '0.00', '0.00', '14045', '14045', '2016-12-06 17:11:24', '订单 2009052224892 赠送的积分', '99');
+INSERT INTO `hx_account_log` VALUES ('25', '1', '0.00', '0.00', '-2300', '-2300', '2016-12-06 17:11:24', '由于退货或未发货操作，退回订单 2009051267570 赠送的积分', '99');
+INSERT INTO `hx_account_log` VALUES ('26', '1', '2310.00', '0.00', '0', '0', '2016-12-06 17:11:24', '由于取消、无效或退货操作，退回支付订单 2009051267570 时使用的预付款', '99');
+INSERT INTO `hx_account_log` VALUES ('27', '1', '0.00', '0.00', '17044', '17044', '2016-12-06 17:11:24', '订单 2009061585887 赠送的积分', '99');
+INSERT INTO `hx_account_log` VALUES ('28', '1', '17054.00', '0.00', '0', '0', '2016-12-06 17:11:24', '1', '99');
+INSERT INTO `hx_account_log` VALUES ('29', '1', '0.00', '0.00', '-17044', '-17044', '2016-12-06 17:11:24', '由于退货或未发货操作，退回订单 2009061585887 赠送的积分', '99');
+INSERT INTO `hx_account_log` VALUES ('30', '1', '-3196.30', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009061525429', '99');
+INSERT INTO `hx_account_log` VALUES ('31', '1', '-1910.00', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009061503335', '99');
+INSERT INTO `hx_account_log` VALUES ('32', '1', '0.00', '0.00', '1900', '1900', '2016-12-06 17:11:24', '订单 2009061503335 赠送的积分', '99');
+INSERT INTO `hx_account_log` VALUES ('33', '1', '0.00', '0.00', '-1900', '-1900', '2016-12-06 17:11:24', '由于退货或未发货操作，退回订单 2009061503335 赠送的积分', '99');
+INSERT INTO `hx_account_log` VALUES ('34', '1', '1910.00', '0.00', '0', '0', '2016-12-06 17:11:24', '由于取消、无效或退货操作，退回支付订单 2009061503335 时使用的预付款', '99');
+INSERT INTO `hx_account_log` VALUES ('35', '1', '-500.00', '0.00', '0', '0', '2016-12-06 17:11:24', '支付订单 2009061510313', '99');
+INSERT INTO `hx_account_log` VALUES ('37', '1', '-111.00', '0.00', '0', '0', '2016-12-08 22:17:27', '', '2');
+INSERT INTO `hx_account_log` VALUES ('38', '1', '-1111.00', '0.00', '0', '0', '2016-12-12 16:36:03', '', '2');
 
 -- ----------------------------
---  Table structure for `hx_admin_user`
+-- Table structure for hx_admin_user
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_admin_user`;
 CREATE TABLE `hx_admin_user` (
@@ -57,19 +89,17 @@ CREATE TABLE `hx_admin_user` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='后台管理员';
+  UNIQUE KEY `username` (`username`) USING BTREE,
+  UNIQUE KEY `email` (`email`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='后台管理员';
 
 -- ----------------------------
---  Records of `hx_admin_user`
+-- Records of hx_admin_user
 -- ----------------------------
-BEGIN;
-INSERT INTO `hx_admin_user` VALUES ('1', 'admin', 'pbkdf2_sha256$12000$HVqHjtCOhoKo$TZOQbvzgln4Ni4WfJtWw3Dz0it9ugCGIxXeAK9sen/4=', '907274532@qq.com', '1', '2017-01-02 12:12:08', '127.0.0.1', '2016-11-27 15:11:13', '2017-01-02 12:12:08');
-COMMIT;
+INSERT INTO `hx_admin_user` VALUES ('1', 'admin', 'pbkdf2_sha256$12000$HVqHjtCOhoKo$TZOQbvzgln4Ni4WfJtWw3Dz0it9ugCGIxXeAK9sen/4=', '907274532@qq.com', '1', '2017-02-12 14:24:30', '127.0.0.1', '2016-11-27 15:11:13', '2017-02-12 14:24:30');
 
 -- ----------------------------
---  Table structure for `hx_article`
+-- Table structure for hx_article
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_article`;
 CREATE TABLE `hx_article` (
@@ -87,10 +117,14 @@ CREATE TABLE `hx_article` (
   `userid` int(11) NOT NULL DEFAULT '0' COMMENT '用户id',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='文章表';
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='文章表';
 
 -- ----------------------------
---  Table structure for `hx_auth_group`
+-- Records of hx_article
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for hx_auth_group
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_auth_group`;
 CREATE TABLE `hx_auth_group` (
@@ -102,36 +136,40 @@ CREATE TABLE `hx_auth_group` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='角色表';
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='角色表';
 
 -- ----------------------------
---  Records of `hx_auth_group`
+-- Records of hx_auth_group
 -- ----------------------------
-BEGIN;
-INSERT INTO `hx_auth_group` VALUES ('1', '超级管理员', null, '1', '76,75,74,73,72,71,70,69,68,67,66,65,64,63,62,61,60,59,58,57,56,55,52,51,50,49,48,47,46,45,44,43,42,41,40,39,38,37,36,35,34,33,22,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1', '2016-11-27 16:28:50', '2016-12-12 20:42:01'), ('2', '普通管理员', '普通管理员', '1', '54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,17,18,19,20,21,43,44,45,46,47,48,49,50,51,52,53,37,38,39,40,41,42,24,25,26,27,28,29,30,31,32,33,34,35,36', '2016-11-27 16:28:50', '2016-12-06 20:51:06'), ('3', '测试', '测试1', '2', '51,33,22,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1', '2016-11-27 16:28:50', '2016-12-06 22:52:17');
-COMMIT;
+INSERT INTO `hx_auth_group` VALUES ('1', '超级管理员', null, '1', '76,75,74,73,72,71,70,69,68,67,66,65,64,63,62,61,60,59,58,57,56,55,52,51,50,49,48,47,46,45,44,43,42,41,40,39,38,37,36,35,34,33,22,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1', '2016-11-27 16:28:50', '2016-12-12 20:42:01');
+INSERT INTO `hx_auth_group` VALUES ('2', '普通管理员', '普通管理员', '1', '54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,17,18,19,20,21,43,44,45,46,47,48,49,50,51,52,53,37,38,39,40,41,42,24,25,26,27,28,29,30,31,32,33,34,35,36', '2016-11-27 16:28:50', '2016-12-06 20:51:06');
+INSERT INTO `hx_auth_group` VALUES ('3', '测试', '测试1', '2', '51,33,22,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1', '2016-11-27 16:28:50', '2016-12-06 22:52:17');
 
 -- ----------------------------
---  Table structure for `hx_auth_group_access`
+-- Table structure for hx_auth_group_access
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_auth_group_access`;
 CREATE TABLE `hx_auth_group_access` (
   `uid` mediumint(8) unsigned NOT NULL,
   `group_id` mediumint(8) unsigned NOT NULL,
-  UNIQUE KEY `uid_group_id` (`uid`,`group_id`),
-  KEY `uid` (`uid`),
-  KEY `group_id` (`group_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='节点和角色中间表';
+  UNIQUE KEY `uid_group_id` (`uid`,`group_id`) USING BTREE,
+  KEY `uid` (`uid`) USING BTREE,
+  KEY `group_id` (`group_id`) USING BTREE
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='节点和角色中间表';
 
 -- ----------------------------
---  Records of `hx_auth_group_access`
+-- Records of hx_auth_group_access
 -- ----------------------------
-BEGIN;
-INSERT INTO `hx_auth_group_access` VALUES ('1', '1'), ('2', '2'), ('3', '0'), ('4', '1'), ('7', '2'), ('8', '2'), ('9', '2');
-COMMIT;
+INSERT INTO `hx_auth_group_access` VALUES ('1', '1');
+INSERT INTO `hx_auth_group_access` VALUES ('2', '2');
+INSERT INTO `hx_auth_group_access` VALUES ('3', '0');
+INSERT INTO `hx_auth_group_access` VALUES ('4', '1');
+INSERT INTO `hx_auth_group_access` VALUES ('7', '2');
+INSERT INTO `hx_auth_group_access` VALUES ('8', '2');
+INSERT INTO `hx_auth_group_access` VALUES ('9', '2');
 
 -- ----------------------------
---  Table structure for `hx_auth_rule`
+-- Table structure for hx_auth_rule
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_auth_rule`;
 CREATE TABLE `hx_auth_rule` (
@@ -147,18 +185,91 @@ CREATE TABLE `hx_auth_rule` (
   `menu` int(1) DEFAULT '0' COMMENT '是否是菜单,1是菜单 2：不是',
   `icon` varchar(150) DEFAULT NULL COMMENT '图标',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=77 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='节点表';
+  UNIQUE KEY `name` (`name`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=80 DEFAULT CHARSET=utf8 COMMENT='节点表';
 
 -- ----------------------------
---  Records of `hx_auth_rule`
+-- Records of hx_auth_rule
 -- ----------------------------
-BEGIN;
-INSERT INTO `hx_auth_rule` VALUES ('1', 'Manageer/Rbac/index', '权限管理', '1', '1', '', '0', 'Rbac/index', '0', '1', 'fa-gear'), ('2', 'Manageer/AdminUser/list', '管理员管理', '1', '1', '', '1', 'AdminUser/index', '1', '1', ''), ('3', 'Manager/AdminUser/index', '列表', '1', '1', '', '2', 'AdminUser/index', '0', '0', ''), ('4', 'Manager/AdminUser/add', '添加', '1', '1', '', '2', 'AdminUser/add', '1', '0', ''), ('5', 'Manager/AdminUser/edit', '修改', '1', '1', '', '2', 'AdminUser/edit', '2', '0', ''), ('6', 'Manager/AdminUser/del', '启用/禁用', '1', '1', '', '2', 'AdminUser/del', '4', '0', ''), ('7', 'Manager/Node/list', '节点管理', '1', '1', '', '1', 'Node/index', '2', '1', 'cogs'), ('8', 'Manager/Node/index', '列表', '1', '1', '', '7', 'Node/index', '0', '0', ''), ('9', 'Manager/Node/add', '添加', '1', '1', '', '7', 'Node/add', '2', '0', ''), ('10', 'Manager/Node/edit', '修改', '1', '1', '', '7', 'Node/edit', '3', '0', ''), ('11', 'Manager/Node/del', '启用/禁用', '1', '1', '', '7', 'Node/del', '4', '0', ''), ('12', 'Manager/Role/list', '角色管理', '1', '1', '', '1', 'Role/index', '2', '1', ''), ('13', 'Manager/Role/index', '列表', '1', '1', '', '12', 'Role/index', '1', '0', ''), ('14', 'Manager/Role/add', '添加', '1', '1', '', '12', 'Role/add', '2', '0', ''), ('15', 'Manager/Role/edit', '修改', '1', '1', '', '12', 'Role/edit', '3', '0', ''), ('16', 'Manager/Role/del', '启用/禁用', '1', '1', '', '12', 'Role/del', '4', '0', ''), ('17', 'Manager/Users/lists', '会员管理', '1', '1', '', '0', 'Users/index', '2', '1', ' fa-user'), ('18', 'Manager/Users/list', '会员管理', '1', '1', '', '17', 'Users/index', '1', '1', ''), ('19', 'Manager/Users/index', '列表', '1', '1', '', '18', 'Users/index', '1', '0', ''), ('20', 'Manager/Users/del', '启用/禁用', '1', '1', '', '18', 'User/del', '2', '0', ''), ('55', 'Manager/UserRank/list', '会员等级', '1', '1', '', '17', 'UserRank/index', '2', '1', ''), ('22', 'Manager/Role/rbac', '授权', '1', '1', '', '12', 'Role/rbac', '5', '0', ''), ('23', 'Manager/UserInfo/list', '个人信息', '1', '1', '', '24', 'UserInfo/index', '2', '0', ''), ('24', 'Manager/UserInfo/index', '修改昵称', '1', '1', '', '27', 'UserInfo/index', '1', '0', ''), ('25', 'Manager/UserInfo/pass', '修改密码', '1', '1', '', '27', 'UserInfo/pass', '2', '0', ''), ('26', 'Manager/Link/list', '友情链接', '1', '1', '', '24', 'Link/index', '3', '1', ''), ('27', 'Manager/Link/index', '列表', '1', '1', '', '30', 'Link/index', '1', '0', ''), ('28', 'Manager/Link/add', '添加', '1', '1', '', '30', 'Link/add', '2', '0', ''), ('29', 'Manager/Link/edit', '修改', '1', '1', '', '30', 'Link/edit', '3', '0', ''), ('30', 'Manager/Link/del', '删除', '1', '1', '', '30', 'Link/del', '4', '0', ''), ('31', 'Manager/Cache/list', '缓存管理', '1', '1', '', '24', 'Cache/index', '4', '1', ''), ('32', 'Manager/Cache/index', '清理缓存', '1', '1', '', '35', 'Cache/index', '1', '0', ''), ('33', 'Manager/Com/list', '内容管理', '1', '1', '', '0', 'Com/list', '1', '1', 'fa-tasks'), ('34', 'Manager/Cate/list', '文章分类', '1', '1', '', '33', 'Cate/index', '1', '1', ''), ('35', 'Manager/Cate/index', '列表', '1', '1', '', '34', 'Cate/index', '1', '0', ''), ('36', 'Manager/Cate/add', '添加', '1', '1', '', '34', 'Cate/add', '2', '0', ''), ('37', 'Manager/Cate/edit', '修改', '1', '1', '', '34', 'Cate/edit', '3', '0', ''), ('38', 'Manager/Cate/del', '删除', '1', '1', '', '34', 'Cate/del', '4', '0', ''), ('39', 'Manager/Article/list', '文章管理', '1', '1', '', '33', 'Article/index', '2', '1', ''), ('40', 'Manager/Article/index', '列表', '1', '1', '', '39', 'Article/index', '1', '0', ''), ('41', 'Manager/Article/add', '添加', '1', '1', '', '39', 'Article/add', '2', '0', ''), ('42', 'Manager/Article/edit', '修改', '1', '1', '', '39', 'Article/edit', '3', '0', ''), ('43', 'Manager/Article/del', '删除', '1', '1', '', '39', 'Article/del', '4', '0', ''), ('44', 'Manager/Comment/list', '评论管理', '1', '1', '', '33', 'Comment/index', '3', '1', ''), ('45', 'Manager/Comment/index', '列表', '1', '1', '', '44', 'Comment/index', '1', '0', ''), ('46', 'Manager/Comment/del', '删除', '0', '1', '', '44', 'Comment/del', '2', '0', ''), ('47', 'Manager/Recycle/list', '回收站', '1', '1', '', '33', 'Recycle/index', '4', '1', ''), ('48', 'Manager/Recycle/index', '列表', '1', '1', '', '47', 'Recycle/index', '1', '0', ''), ('49', 'Manager/Recycle/restore', '恢复', '1', '1', '', '47', 'Recycle/restore', '2', '0', ''), ('50', 'Manager/Recycle/del', '删除', '1', '1', '', '47', 'Recycle/del', '3', '0', ''), ('51', 'Manager/Users/accountDetails', '账目明细', '1', '1', '', '18', 'Users/accountDetails', '50', '2', ''), ('52', 'Manager/Users/receiptAddress', '收货地址', '1', '1', '', '18', 'Users/receiptAddress', '50', '2', ''), ('56', 'Manager/UserRank/index', '等级列表', '1', '1', '', '55', 'UserRank/index', '50', '0', ''), ('57', 'Manager/UserRank/add', '增加等级', '1', '1', '', '55', 'UserRank/add', '2', '0', ''), ('58', 'Manager/UserRank/edit', '修改等级', '1', '1', '', '55', 'UserRank/edit', '3', '0', ''), ('59', 'Manager/UserRank/del', '删除等级', '1', '1', '', '55', 'UserRank/del', '4', '0', ''), ('60', 'Manager/Feedback/list', '会员留言', '1', '1', '', '17', 'Feedback/index', '4', '1', ''), ('61', 'Manager/Feedback/index', '刘洋列表', '1', '1', '', '60', 'Feedback/index', '1', '2', ''), ('62', 'Manager/Feedback/info', '查看详情', '1', '1', '', '60', 'Feedback/info', '2', '2', ''), ('63', 'Manager/Feedback/del', '删除留言', '1', '1', '', '60', 'Feedback/del', '3', '2', ''), ('64', 'Manager/UserRank/showPrice', '是否显示价格', '1', '1', '', '55', 'UserRank/showPrice', '50', '2', ''), ('65', 'Manager/UserRank/specialRank', '是否特殊会员', '1', '1', '', '55', 'UserRank/specialRank', '50', '2', ''), ('66', 'Manager/RechargeCash/list', '充值提现', '1', '1', '', '17', 'RechargeCash/index', '3', '1', ''), ('67', 'Manager/RechargeCash/index', '申请列表', '1', '1', '', '66', 'RechargeCash/index', '1', '1', ''), ('68', 'Manager/RechargeCash/add', '添加申请', '1', '1', '', '66', 'RechargeCash/add', '2', '2', ''), ('69', 'Manager/RechargeCash/edit', '修改申请', '1', '1', '', '66', 'RechargeCash/edit', '3', '2', ''), ('70', 'Manager/RechargeCash/del', '删除申请', '1', '1', '', '66', 'RechargeCash/del', '5', '2', ''), ('71', 'Manager/RechargeCash/check', '审核申请', '1', '1', '', '66', 'RechargeCash/check', '4', '2', ''), ('72', 'Manager/Order/lists', '订单管理', '1', '1', '', '0', 'Order/lists', '4', '1', 'fa-columns fa-fw'), ('73', 'Manager/Order/list', '订单列表', '1', '1', '', '72', 'Order/index', '1', '1', ''), ('74', 'Manager/Order/index', '订单列表', '1', '1', '', '73', 'Order/index', '1', '2', ''), ('75', 'Manager/Order/look', '查看', '1', '1', '', '73', 'Order/look', '2', '2', ''), ('76', 'Manager/Order/del', '移除', '1', '1', '', '73', 'Order/del', '3', '2', '');
-COMMIT;
+INSERT INTO `hx_auth_rule` VALUES ('1', 'Manageer/Rbac/index', '权限管理', '1', '1', '', '0', 'Rbac/index', '0', '1', 'fa-gear');
+INSERT INTO `hx_auth_rule` VALUES ('2', 'Manageer/AdminUser/list', '管理员管理', '1', '1', '', '1', 'AdminUser/index', '1', '1', '');
+INSERT INTO `hx_auth_rule` VALUES ('3', 'Manager/AdminUser/index', '列表', '1', '1', '', '2', 'AdminUser/index', '0', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('4', 'Manager/AdminUser/add', '添加', '1', '1', '', '2', 'AdminUser/add', '1', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('5', 'Manager/AdminUser/edit', '修改', '1', '1', '', '2', 'AdminUser/edit', '2', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('6', 'Manager/AdminUser/del', '启用/禁用', '1', '1', '', '2', 'AdminUser/del', '4', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('7', 'Manager/Node/list', '节点管理', '1', '1', '', '1', 'Node/index', '2', '1', 'cogs');
+INSERT INTO `hx_auth_rule` VALUES ('8', 'Manager/Node/index', '列表', '1', '1', '', '7', 'Node/index', '0', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('9', 'Manager/Node/add', '添加', '1', '1', '', '7', 'Node/add', '2', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('10', 'Manager/Node/edit', '修改', '1', '1', '', '7', 'Node/edit', '3', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('11', 'Manager/Node/del', '启用/禁用', '1', '1', '', '7', 'Node/del', '4', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('12', 'Manager/Role/list', '角色管理', '1', '1', '', '1', 'Role/index', '2', '1', '');
+INSERT INTO `hx_auth_rule` VALUES ('13', 'Manager/Role/index', '列表', '1', '1', '', '12', 'Role/index', '1', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('14', 'Manager/Role/add', '添加', '1', '1', '', '12', 'Role/add', '2', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('15', 'Manager/Role/edit', '修改', '1', '1', '', '12', 'Role/edit', '3', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('16', 'Manager/Role/del', '启用/禁用', '1', '1', '', '12', 'Role/del', '4', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('17', 'Manager/Users/lists', '会员管理', '1', '1', '', '0', 'Users/index', '2', '1', ' fa-user');
+INSERT INTO `hx_auth_rule` VALUES ('18', 'Manager/Users/list', '会员管理', '1', '1', '', '17', 'Users/index', '1', '1', '');
+INSERT INTO `hx_auth_rule` VALUES ('19', 'Manager/Users/index', '列表', '1', '1', '', '18', 'Users/index', '1', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('20', 'Manager/Users/del', '启用/禁用', '1', '1', '', '18', 'User/del', '2', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('55', 'Manager/UserRank/list', '会员等级', '1', '1', '', '17', 'UserRank/index', '2', '1', '');
+INSERT INTO `hx_auth_rule` VALUES ('22', 'Manager/Role/rbac', '授权', '1', '1', '', '12', 'Role/rbac', '5', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('23', 'Manager/UserInfo/list', '个人信息', '1', '1', '', '24', 'UserInfo/index', '2', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('24', 'Manager/UserInfo/index', '修改昵称', '1', '1', '', '27', 'UserInfo/index', '1', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('25', 'Manager/UserInfo/pass', '修改密码', '1', '1', '', '27', 'UserInfo/pass', '2', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('26', 'Manager/Link/list', '友情链接', '1', '1', '', '24', 'Link/index', '3', '1', '');
+INSERT INTO `hx_auth_rule` VALUES ('27', 'Manager/Link/index', '列表', '1', '1', '', '30', 'Link/index', '1', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('28', 'Manager/Link/add', '添加', '1', '1', '', '30', 'Link/add', '2', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('29', 'Manager/Link/edit', '修改', '1', '1', '', '30', 'Link/edit', '3', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('30', 'Manager/Link/del', '删除', '1', '1', '', '30', 'Link/del', '4', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('31', 'Manager/Cache/list', '缓存管理', '1', '1', '', '24', 'Cache/index', '4', '1', '');
+INSERT INTO `hx_auth_rule` VALUES ('32', 'Manager/Cache/index', '清理缓存', '1', '1', '', '35', 'Cache/index', '1', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('33', 'Manager/Com/list', '内容管理', '1', '1', '', '0', 'Com/list', '1', '1', 'fa-tasks');
+INSERT INTO `hx_auth_rule` VALUES ('34', 'Manager/Cate/list', '文章分类', '1', '1', '', '33', 'Cate/index', '1', '1', '');
+INSERT INTO `hx_auth_rule` VALUES ('35', 'Manager/Cate/index', '列表', '1', '1', '', '34', 'Cate/index', '1', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('36', 'Manager/Cate/add', '添加', '1', '1', '', '34', 'Cate/add', '2', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('37', 'Manager/Cate/edit', '修改', '1', '1', '', '34', 'Cate/edit', '3', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('38', 'Manager/Cate/del', '删除', '1', '1', '', '34', 'Cate/del', '4', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('39', 'Manager/Article/list', '文章管理', '1', '1', '', '33', 'Article/index', '2', '1', '');
+INSERT INTO `hx_auth_rule` VALUES ('40', 'Manager/Article/index', '列表', '1', '1', '', '39', 'Article/index', '1', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('41', 'Manager/Article/add', '添加', '1', '1', '', '39', 'Article/add', '2', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('42', 'Manager/Article/edit', '修改', '1', '1', '', '39', 'Article/edit', '3', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('43', 'Manager/Article/del', '删除', '1', '1', '', '39', 'Article/del', '4', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('44', 'Manager/Comment/list', '评论管理', '1', '1', '', '33', 'Comment/index', '3', '1', '');
+INSERT INTO `hx_auth_rule` VALUES ('45', 'Manager/Comment/index', '列表', '1', '1', '', '44', 'Comment/index', '1', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('46', 'Manager/Comment/del', '删除', '0', '1', '', '44', 'Comment/del', '2', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('47', 'Manager/Recycle/list', '回收站', '1', '1', '', '33', 'Recycle/index', '4', '1', '');
+INSERT INTO `hx_auth_rule` VALUES ('48', 'Manager/Recycle/index', '列表', '1', '1', '', '47', 'Recycle/index', '1', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('49', 'Manager/Recycle/restore', '恢复', '1', '1', '', '47', 'Recycle/restore', '2', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('50', 'Manager/Recycle/del', '删除', '1', '1', '', '47', 'Recycle/del', '3', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('51', 'Manager/Users/accountDetails', '账目明细', '1', '1', '', '18', 'Users/accountDetails', '50', '2', '');
+INSERT INTO `hx_auth_rule` VALUES ('52', 'Manager/Users/receiptAddress', '收货地址', '1', '1', '', '18', 'Users/receiptAddress', '50', '2', '');
+INSERT INTO `hx_auth_rule` VALUES ('56', 'Manager/UserRank/index', '等级列表', '1', '1', '', '55', 'UserRank/index', '50', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('57', 'Manager/UserRank/add', '增加等级', '1', '1', '', '55', 'UserRank/add', '2', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('58', 'Manager/UserRank/edit', '修改等级', '1', '1', '', '55', 'UserRank/edit', '3', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('59', 'Manager/UserRank/del', '删除等级', '1', '1', '', '55', 'UserRank/del', '4', '0', '');
+INSERT INTO `hx_auth_rule` VALUES ('60', 'Manager/Feedback/list', '会员留言', '1', '1', '', '17', 'Feedback/index', '4', '1', '');
+INSERT INTO `hx_auth_rule` VALUES ('61', 'Manager/Feedback/index', '刘洋列表', '1', '1', '', '60', 'Feedback/index', '1', '2', '');
+INSERT INTO `hx_auth_rule` VALUES ('62', 'Manager/Feedback/info', '查看详情', '1', '1', '', '60', 'Feedback/info', '2', '2', '');
+INSERT INTO `hx_auth_rule` VALUES ('63', 'Manager/Feedback/del', '删除留言', '1', '1', '', '60', 'Feedback/del', '3', '2', '');
+INSERT INTO `hx_auth_rule` VALUES ('64', 'Manager/UserRank/showPrice', '是否显示价格', '1', '1', '', '55', 'UserRank/showPrice', '50', '2', '');
+INSERT INTO `hx_auth_rule` VALUES ('65', 'Manager/UserRank/specialRank', '是否特殊会员', '1', '1', '', '55', 'UserRank/specialRank', '50', '2', '');
+INSERT INTO `hx_auth_rule` VALUES ('66', 'Manager/RechargeCash/list', '充值提现', '1', '1', '', '17', 'RechargeCash/index', '3', '1', '');
+INSERT INTO `hx_auth_rule` VALUES ('67', 'Manager/RechargeCash/index', '申请列表', '1', '1', '', '66', 'RechargeCash/index', '1', '1', '');
+INSERT INTO `hx_auth_rule` VALUES ('68', 'Manager/RechargeCash/add', '添加申请', '1', '1', '', '66', 'RechargeCash/add', '2', '2', '');
+INSERT INTO `hx_auth_rule` VALUES ('69', 'Manager/RechargeCash/edit', '修改申请', '1', '1', '', '66', 'RechargeCash/edit', '3', '2', '');
+INSERT INTO `hx_auth_rule` VALUES ('70', 'Manager/RechargeCash/del', '删除申请', '1', '1', '', '66', 'RechargeCash/del', '5', '2', '');
+INSERT INTO `hx_auth_rule` VALUES ('71', 'Manager/RechargeCash/check', '审核申请', '1', '1', '', '66', 'RechargeCash/check', '4', '2', '');
+INSERT INTO `hx_auth_rule` VALUES ('72', 'Manager/Order/lists', '订单管理', '1', '1', '', '0', 'Order/lists', '4', '1', 'fa-columns fa-fw');
+INSERT INTO `hx_auth_rule` VALUES ('73', 'Manager/Order/list', '订单列表', '1', '1', '', '72', 'Order/index', '1', '1', '');
+INSERT INTO `hx_auth_rule` VALUES ('74', 'Manager/Order/index', '订单列表', '1', '1', '', '73', 'Order/index', '1', '2', '');
+INSERT INTO `hx_auth_rule` VALUES ('75', 'Manager/Order/look', '查看', '1', '1', '', '73', 'Order/look', '2', '2', '');
+INSERT INTO `hx_auth_rule` VALUES ('76', 'Manager/Order/del', '移除', '1', '1', '', '73', 'Order/del', '3', '2', '');
+INSERT INTO `hx_auth_rule` VALUES ('77', 'Manager/Log/common', '日志管理', '1', '1', '', '0', 'Log/common', '12', '1', 'fa-envelope-o');
+INSERT INTO `hx_auth_rule` VALUES ('78', 'Manager/OperationLog/list', '操作日志', '1', '1', '', '77', 'OperationLog/list', '1', '1', '');
+INSERT INTO `hx_auth_rule` VALUES ('79', 'Manager/OperationLog/index', '列表', '1', '1', '', '78', 'OperationLog/index', '1', '2', '');
 
 -- ----------------------------
---  Table structure for `hx_back_goods`
+-- Table structure for hx_back_goods
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_back_goods`;
 CREATE TABLE `hx_back_goods` (
@@ -174,12 +285,16 @@ CREATE TABLE `hx_back_goods` (
   `send_number` smallint(5) unsigned DEFAULT '0',
   `goods_attr` text,
   PRIMARY KEY (`rec_id`),
-  KEY `back_id` (`back_id`),
-  KEY `goods_id` (`goods_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  KEY `back_id` (`back_id`) USING BTREE,
+  KEY `goods_id` (`goods_id`) USING BTREE
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
---  Table structure for `hx_back_order`
+-- Records of hx_back_goods
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for hx_back_order
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_back_order`;
 CREATE TABLE `hx_back_order` (
@@ -213,12 +328,16 @@ CREATE TABLE `hx_back_order` (
   `create_time` datetime DEFAULT NULL,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`back_id`),
-  KEY `user_id` (`user_id`),
-  KEY `order_id` (`order_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  KEY `user_id` (`user_id`) USING BTREE,
+  KEY `order_id` (`order_id`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
---  Table structure for `hx_booking_goods`
+-- Records of hx_back_order
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for hx_booking_goods
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_booking_goods`;
 CREATE TABLE `hx_booking_goods` (
@@ -236,11 +355,15 @@ CREATE TABLE `hx_booking_goods` (
   `dispose_time` datetime DEFAULT NULL,
   `dispose_note` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`rec_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  KEY `user_id` (`user_id`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
---  Table structure for `hx_cate`
+-- Records of hx_booking_goods
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for hx_cate
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_cate`;
 CREATE TABLE `hx_cate` (
@@ -250,10 +373,14 @@ CREATE TABLE `hx_cate` (
   `sort` int(11) DEFAULT '50',
   `status` tinyint(4) DEFAULT '1' COMMENT '1:启用，2：禁用',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='文章分类表';
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='文章分类表';
 
 -- ----------------------------
---  Table structure for `hx_comments`
+-- Records of hx_cate
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for hx_comments
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_comments`;
 CREATE TABLE `hx_comments` (
@@ -267,12 +394,16 @@ CREATE TABLE `hx_comments` (
   `parentid` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '被回复的评论id',
   `aid` int(11) DEFAULT NULL COMMENT '评论内容id',
   PRIMARY KEY (`id`),
-  KEY `comment_parent` (`parentid`),
-  KEY `createtime` (`create_time`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  KEY `comment_parent` (`parentid`) USING BTREE,
+  KEY `createtime` (`create_time`) USING BTREE
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
---  Table structure for `hx_delivery_goods`
+-- Records of hx_comments
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for hx_delivery_goods
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_delivery_goods`;
 CREATE TABLE `hx_delivery_goods` (
@@ -290,12 +421,16 @@ CREATE TABLE `hx_delivery_goods` (
   `send_number` smallint(5) unsigned DEFAULT '0',
   `goods_attr` text,
   PRIMARY KEY (`rec_id`),
-  KEY `delivery_id` (`delivery_id`,`goods_id`),
-  KEY `goods_id` (`goods_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  KEY `delivery_id` (`delivery_id`,`goods_id`) USING BTREE,
+  KEY `goods_id` (`goods_id`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
---  Table structure for `hx_delivery_order`
+-- Records of hx_delivery_goods
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for hx_delivery_order
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_delivery_order`;
 CREATE TABLE `hx_delivery_order` (
@@ -330,12 +465,16 @@ CREATE TABLE `hx_delivery_order` (
   `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `agency_id` smallint(5) unsigned DEFAULT '0',
   PRIMARY KEY (`delivery_id`),
-  KEY `user_id` (`user_id`),
-  KEY `order_id` (`order_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  KEY `user_id` (`user_id`) USING BTREE,
+  KEY `order_id` (`order_id`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
---  Table structure for `hx_feedback`
+-- Records of hx_delivery_order
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for hx_feedback
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_feedback`;
 CREATE TABLE `hx_feedback` (
@@ -353,11 +492,15 @@ CREATE TABLE `hx_feedback` (
   `order_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '是否回复',
   `msg_area` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`msg_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户留言';
+  KEY `user_id` (`user_id`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='用户留言';
 
 -- ----------------------------
---  Table structure for `hx_link`
+-- Records of hx_feedback
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for hx_link
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_link`;
 CREATE TABLE `hx_link` (
@@ -370,23 +513,37 @@ CREATE TABLE `hx_link` (
   `time` int(11) DEFAULT NULL COMMENT '创建时间',
   `create_time` int(11) DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='友情链接';
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='友情链接';
 
 -- ----------------------------
---  Table structure for `hx_log`
+-- Records of hx_link
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for hx_log
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_log`;
 CREATE TABLE `hx_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uid` int(11) DEFAULT NULL COMMENT '管理员远',
-  `time` int(11) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `ip` varchar(20) DEFAULT NULL COMMENT '登录ip',
+  `uid` int(11) NOT NULL COMMENT '管理员',
+  `module` varchar(50) NOT NULL DEFAULT '' COMMENT '模块',
+  `controller` varchar(50) NOT NULL DEFAULT '' COMMENT '控制器',
+  `action` varchar(50) NOT NULL DEFAULT '' COMMENT '方法',
+  `post_value` varchar(255) DEFAULT NULL COMMENT 'post提交内容',
+  `get_value` varchar(255) DEFAULT '' COMMENT 'get 提交内容',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1152 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
---  Table structure for `hx_nav`
+-- Records of hx_log
+-- ----------------------------
+INSERT INTO `hx_log` VALUES ('1', '1', 'Manager', 'Node', 'edit', '{\"pid\":\"0\",\"title\":\"\\u7cfb\\u7edf\\u8bbe\\u7f6e\",\"name\":\"Common\\/common\\/list\",\"url\":\"common\\/list\",\"icon\":\"fa-cog\",\"sort\":\"50\",\"menu\":\"1\",\"id\":\"17\"}', '[]', '2017-03-06 13:20:17');
+INSERT INTO `hx_log` VALUES ('2', '1', 'Manager', 'Node', 'edit', '[]', '{\"id\":\"1\"}', '2017-03-06 13:21:59');
+INSERT INTO `hx_log` VALUES ('3', '1', 'Manager', 'BasicSettings', 'index', '[]', '[]', '2017-03-06 13:22:14');
+
+-- ----------------------------
+-- Table structure for hx_nav
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_nav`;
 CREATE TABLE `hx_nav` (
@@ -397,10 +554,14 @@ CREATE TABLE `hx_nav` (
   `time` int(11) DEFAULT NULL COMMENT '创建时间',
   `name` varchar(255) DEFAULT NULL COMMENT '名称',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='导航栏表';
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='导航栏表';
 
 -- ----------------------------
---  Table structure for `hx_order_action`
+-- Records of hx_nav
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for hx_order_action
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_order_action`;
 CREATE TABLE `hx_order_action` (
@@ -412,11 +573,15 @@ CREATE TABLE `hx_order_action` (
   `action_note` varchar(255) NOT NULL DEFAULT '' COMMENT '操作备注',
   `log_time` datetime DEFAULT NULL COMMENT '操作时间',
   PRIMARY KEY (`action_id`),
-  KEY `order_id` (`order_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='订单操作记录表';
+  KEY `order_id` (`order_id`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COMMENT='订单操作记录表';
 
 -- ----------------------------
---  Table structure for `hx_order_goods`
+-- Records of hx_order_action
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for hx_order_goods
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_order_goods`;
 CREATE TABLE `hx_order_goods` (
@@ -437,12 +602,16 @@ CREATE TABLE `hx_order_goods` (
   `is_gift` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
   `goods_attr_id` varchar(255) NOT NULL DEFAULT '' COMMENT '是否参加优惠活动，0，否；其他',
   PRIMARY KEY (`rec_id`),
-  KEY `order_id` (`order_id`),
-  KEY `goods_id` (`goods_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  KEY `order_id` (`order_id`) USING BTREE,
+  KEY `goods_id` (`goods_id`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
---  Table structure for `hx_order_info`
+-- Records of hx_order_goods
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for hx_order_info
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_order_info`;
 CREATE TABLE `hx_order_info` (
@@ -456,17 +625,17 @@ CREATE TABLE `hx_order_info` (
   `city` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '收货人的城市id',
   `district` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '收货人的地区id',
   `address` varchar(255) NOT NULL DEFAULT '' COMMENT '收货人的详细地址,用户页面填写',
-  `zipcode` varchar(60) NOT NULL DEFAULT '' COMMENT '收货人的邮编,用户页面填写',
-  `tel` varchar(60) NOT NULL DEFAULT '' COMMENT '收货人的电话,用户页面填写',
+  `zipcode` varchar(60) DEFAULT '' COMMENT '收货人的邮编,用户页面填写',
+  `tel` varchar(60) DEFAULT '' COMMENT '收货人的电话,用户页面填写',
   `mobile` varchar(60) NOT NULL DEFAULT '' COMMENT '收货人的手机,用户页面填写',
-  `email` varchar(60) NOT NULL DEFAULT '' COMMENT '收货人的Email, 用户页面填写',
-  `postscript` varchar(255) NOT NULL DEFAULT '' COMMENT '订单附言,由用户提交订单前填写',
-  `shipping_id` tinyint(3) NOT NULL DEFAULT '0' COMMENT '用户选择的配送方式id',
-  `shipping_name` varchar(120) NOT NULL DEFAULT '' COMMENT '用户选择的配送方式的名称',
+  `email` varchar(60) DEFAULT '' COMMENT '收货人的Email, 用户页面填写',
+  `postscript` varchar(255) DEFAULT '' COMMENT '订单附言,由用户提交订单前填写',
+  `shipping_id` tinyint(3) DEFAULT '0' COMMENT '用户选择的配送方式id',
+  `shipping_name` varchar(120) DEFAULT '' COMMENT '用户选择的配送方式的名称',
   `pay_id` tinyint(3) NOT NULL DEFAULT '0' COMMENT '用户选择的支付方式的id',
   `pay_name` varchar(120) NOT NULL DEFAULT '' COMMENT '用户选择的支付方式名称',
-  `inv_payee` varchar(120) NOT NULL DEFAULT '' COMMENT '发票抬头,用户页面填写',
-  `inv_content` varchar(120) NOT NULL DEFAULT '' COMMENT '发票内容,用户页面选择',
+  `inv_payee` varchar(120) DEFAULT '' COMMENT '发票抬头,用户页面填写',
+  `inv_content` varchar(120) DEFAULT '' COMMENT '发票内容,用户页面选择',
   `goods_amount` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '商品的总金额',
   `shipping_fee` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '配送费用',
   `insure_fee` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '支付费用,跟支付方式的配置相关',
@@ -476,30 +645,40 @@ CREATE TABLE `hx_order_info` (
   `integral_money` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '使用积分金额',
   `bonus` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '使用红包金额',
   `order_amount` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '应付款金额',
-  `create_time` datetime DEFAULT NULL COMMENT '订单生成时间',
+  `create_time` datetime NOT NULL COMMENT '订单生成时间',
   `confirm_time` datetime DEFAULT NULL COMMENT '订单确认时间',
   `pay_time` datetime DEFAULT NULL COMMENT '订单支付时间',
   `shipping_time` datetime DEFAULT NULL COMMENT '订单配送时间',
-  `bonus_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '红包id',
-  `invoice_no` varchar(255) NOT NULL DEFAULT '' COMMENT '发货时填写, 可在订单查询查看',
-  `extension_code` varchar(30) NOT NULL DEFAULT '' COMMENT '通过活动购买的商品的代号,group_buy是团购; auction是拍卖;snatch夺宝奇兵;正常普通产品该处理为空',
-  `extension_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '通过活动购买的物品id,取值good_activity;如果是正常普通商品,该处为0',
-  `inv_type` varchar(60) NOT NULL COMMENT '发票类型,用户页面选择',
-  `tax` decimal(10,2) NOT NULL COMMENT '发票税额',
-  `discount` decimal(10,2) NOT NULL COMMENT '折扣金额',
+  `bonus_id` mediumint(8) unsigned DEFAULT '0' COMMENT '红包id',
+  `invoice_no` varchar(255) DEFAULT '' COMMENT '发货时填写, 可在订单查询查看',
+  `extension_code` varchar(30) DEFAULT '' COMMENT '通过活动购买的商品的代号,group_buy是团购; auction是拍卖;snatch夺宝奇兵;正常普通产品该处理为空',
+  `extension_id` mediumint(8) unsigned DEFAULT '0' COMMENT '通过活动购买的物品id,取值good_activity;如果是正常普通商品,该处为0',
+  `inv_type` varchar(60) DEFAULT NULL COMMENT '发票类型,用户页面选择',
+  `tax` decimal(10,2) DEFAULT NULL COMMENT '发票税额',
+  `discount` decimal(10,2) DEFAULT NULL COMMENT '折扣金额',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `status` tinyint(4) DEFAULT '1' COMMENT '是否删除1：正常2：删除',
+  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否删除1：正常2：删除',
   PRIMARY KEY (`order_id`),
-  UNIQUE KEY `order_sn` (`order_sn`),
-  KEY `user_id` (`user_id`),
-  KEY `order_status` (`order_status`),
-  KEY `shipping_id` (`shipping_id`),
-  KEY `pay_id` (`pay_id`),
-  KEY `extension_code` (`extension_code`,`extension_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='订单表';
+  UNIQUE KEY `order_sn` (`order_sn`) USING BTREE,
+  KEY `user_id` (`user_id`) USING BTREE,
+  KEY `order_status` (`order_status`) USING BTREE,
+  KEY `shipping_id` (`shipping_id`) USING BTREE,
+  KEY `pay_id` (`pay_id`) USING BTREE,
+  KEY `extension_code` (`extension_code`,`extension_id`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COMMENT='订单表';
 
 -- ----------------------------
---  Table structure for `hx_payment`
+-- Records of hx_order_info
+-- ----------------------------
+INSERT INTO `hx_order_info` VALUES ('20', '1486883229929903294', '1', '1', '张鑫', '1', '1', '1', '1', '这是测试订单', '277500', '', '18518011371', '', '', '1', '这是测试', '1', '微信支付', '', '', '100.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '200.00', '2017-02-12 15:07:09', null, null, null, '0', '', '', '0', null, null, null, '2017-02-12 15:07:09', '1');
+INSERT INTO `hx_order_info` VALUES ('21', '1486883240851504636', '1', '1', '张鑫', '1', '1', '1', '1', '这是测试订单', '277500', '', '18518011371', '', '', '1', '这是测试', '1', '微信支付', '', '', '100.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '200.00', '2017-02-12 15:07:20', null, null, null, '0', '', '', '0', null, null, null, '2017-02-12 15:07:20', '1');
+INSERT INTO `hx_order_info` VALUES ('22', '1486883241231607534', '1', '1', '张鑫', '1', '1', '1', '1', '这是测试订单', '277500', '', '18518011371', '', '', '1', '这是测试', '1', '微信支付', '', '', '100.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '200.00', '2017-02-12 15:07:21', null, null, null, '0', '', '', '0', null, null, null, '2017-02-12 15:07:21', '1');
+INSERT INTO `hx_order_info` VALUES ('23', '1486883241569608853', '1', '1', '张鑫', '1', '1', '1', '1', '这是测试订单', '277500', '', '18518011371', '', '', '1', '这是测试', '1', '微信支付', '', '', '100.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '200.00', '2017-02-12 15:07:21', null, null, null, '0', '', '', '0', null, null, null, '2017-02-12 15:07:21', '1');
+INSERT INTO `hx_order_info` VALUES ('24', '1486883241886601493', '1', '1', '张鑫', '1', '1', '1', '1', '这是测试订单', '277500', '', '18518011371', '', '', '1', '这是测试', '1', '微信支付', '', '', '100.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '200.00', '2017-02-12 15:07:21', null, null, null, '0', '', '', '0', null, null, null, '2017-02-12 15:07:21', '1');
+INSERT INTO `hx_order_info` VALUES ('25', '1486883242208601114', '1', '1', '张鑫', '1', '1', '1', '1', '这是测试订单', '277500', '', '18518011371', '', '', '1', '这是测试', '1', '微信支付', '', '', '100.00', '0.00', '0.00', '0.00', '0.00', '0', '0.00', '0.00', '200.00', '2017-02-12 15:07:22', null, null, null, '0', '', '', '0', null, null, null, '2017-02-12 15:22:57', '2');
+
+-- ----------------------------
+-- Table structure for hx_payment
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_payment`;
 CREATE TABLE `hx_payment` (
@@ -516,11 +695,15 @@ CREATE TABLE `hx_payment` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`pay_id`),
-  UNIQUE KEY `pay_code` (`pay_code`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='支付工具';
+  UNIQUE KEY `pay_code` (`pay_code`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='支付工具';
 
 -- ----------------------------
---  Table structure for `hx_region`
+-- Records of hx_payment
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for hx_region
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_region`;
 CREATE TABLE `hx_region` (
@@ -530,13 +713,17 @@ CREATE TABLE `hx_region` (
   `region_type` tinyint(1) NOT NULL DEFAULT '2',
   `agency_id` smallint(5) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`region_id`),
-  KEY `parent_id` (`parent_id`),
-  KEY `region_type` (`region_type`),
-  KEY `agency_id` (`agency_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3409 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='区域表';
+  KEY `parent_id` (`parent_id`) USING BTREE,
+  KEY `region_type` (`region_type`) USING BTREE,
+  KEY `agency_id` (`agency_id`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=3409 DEFAULT CHARSET=utf8 COMMENT='区域表';
 
 -- ----------------------------
---  Table structure for `hx_system`
+-- Records of hx_region
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for hx_system
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_system`;
 CREATE TABLE `hx_system` (
@@ -553,24 +740,22 @@ CREATE TABLE `hx_system` (
   `copyright` varchar(200) DEFAULT NULL COMMENT '底部版权',
   `content` text COMMENT '关于我们',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
---  Records of `hx_system`
+-- Records of hx_system
 -- ----------------------------
-BEGIN;
 INSERT INTO `hx_system` VALUES ('1', '嘎嘎时代科技有限公司', '嘎嘎时代科技', 'www.haophper.com', '霍营', '18600957490', '907274532', '907274532@qq.com', '嘎嘎时代', '嘎嘎时代嘎嘎时代嘎嘎时代嘎嘎时代嘎嘎时代嘎嘎时代嘎嘎时代嘎嘎时代嘎嘎时代嘎嘎时代', '嘎嘎时代', '嘎嘎时代嘎嘎时代嘎嘎时代嘎嘎时代嘎嘎时代嘎嘎时代嘎嘎时代嘎嘎时代嘎嘎时代嘎嘎时代2222222222');
-COMMIT;
 
 -- ----------------------------
---  Table structure for `hx_user`
+-- Table structure for hx_user
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_user`;
 CREATE TABLE `hx_user` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(60) NOT NULL DEFAULT '' COMMENT '邮箱',
   `username` varchar(60) NOT NULL DEFAULT '' COMMENT '用户名',
-  `password` varchar(32) NOT NULL DEFAULT '' COMMENT '密码',
+  `password` varchar(60) NOT NULL DEFAULT '' COMMENT '密码',
   `sex` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '性别',
   `birthday` datetime DEFAULT NULL,
   `user_money` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '用户现有资金',
@@ -582,76 +767,17 @@ CREATE TABLE `hx_user` (
   `create_time` datetime DEFAULT NULL,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`),
-  KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='会员表';
+  UNIQUE KEY `username` (`username`) USING BTREE,
+  KEY `email` (`email`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='会员表';
 
 -- ----------------------------
---  Table structure for `hx_user_account`
+-- Records of hx_user
 -- ----------------------------
-DROP TABLE IF EXISTS `hx_user_account`;
-CREATE TABLE `hx_user_account` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
-  `admin_user` varchar(255) NOT NULL COMMENT '操作该笔交易的管理员的用户名',
-  `amount` decimal(60,2) NOT NULL COMMENT '资金的数目，正数为增加，负数为减少',
-  `admin_note` varchar(255) NOT NULL COMMENT '管理员的备注',
-  `user_note` varchar(255) NOT NULL COMMENT '用户备注',
-  `process_type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '操作类型，2，提现；1，其实就是充值',
-  `payment_id` tinyint(1) NOT NULL COMMENT '支付方式id',
-  `is_paid` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否已经付款，０，未付；１，已付',
-  `status` tinyint(1) DEFAULT '1' COMMENT '删除 1：正常，2：删除',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `pay_time` datetime DEFAULT NULL COMMENT '修改时间',
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `is_paid` (`is_paid`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='会员账户';
+INSERT INTO `hx_user` VALUES ('1', '907274532@qq.com', '浩轩', 'pbkdf2_sha256$12000$HVqHjtCOhoKo$TZOQbvzgln4Ni4WfJtWw3Dz0it9', '0', '2017-02-12 14:54:13', '0.00', '0.00', '0', '0', '1', '0', '2017-02-12 14:54:20', '2017-02-12 14:55:31');
 
 -- ----------------------------
---  Table structure for `hx_user_address`
--- ----------------------------
-DROP TABLE IF EXISTS `hx_user_address`;
-CREATE TABLE `hx_user_address` (
-  `address_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `address_name` varchar(50) NOT NULL DEFAULT '' COMMENT '名称',
-  `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
-  `consignee` varchar(60) NOT NULL DEFAULT '' COMMENT '收货人的名字',
-  `email` varchar(60) NOT NULL DEFAULT '' COMMENT '收货人的email',
-  `country` smallint(5) NOT NULL DEFAULT '0' COMMENT '收货人的国家',
-  `province` smallint(5) NOT NULL DEFAULT '0' COMMENT '收货人的省份',
-  `city` smallint(5) NOT NULL DEFAULT '0' COMMENT '收货人城市',
-  `district` smallint(5) NOT NULL DEFAULT '0' COMMENT '收货人的地区',
-  `address` varchar(120) NOT NULL DEFAULT '' COMMENT '收货人的详细地址',
-  `zipcode` varchar(60) NOT NULL DEFAULT '' COMMENT '收货人的邮编',
-  `tel` varchar(60) NOT NULL DEFAULT '' COMMENT '收货人的电话',
-  `mobile` varchar(60) NOT NULL DEFAULT '' COMMENT '收货人的手机号',
-  `create_time` datetime DEFAULT NULL,
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`address_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='会员收货表';
-
--- ----------------------------
---  Table structure for `hx_user_rank`
--- ----------------------------
-DROP TABLE IF EXISTS `hx_user_rank`;
-CREATE TABLE `hx_user_rank` (
-  `rank_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
-  `rank_name` varchar(30) NOT NULL DEFAULT '' COMMENT '会员等级名称',
-  `min_points` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最低积分',
-  `max_points` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最高积分',
-  `discount` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '该会员等级的商品折扣',
-  `show_price` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否在不是该等级会员购买页面显示该会员等级的折扣价格.1,显示;2,不显示',
-  `special_rank` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否事特殊会员等级组.1,不是;2,是',
-  `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '1：启用;2：禁用',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
-  PRIMARY KEY (`rank_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='会员等级表';
-
--- ----------------------------
---  Table structure for `hx_users`
+-- Table structure for hx_users
 -- ----------------------------
 DROP TABLE IF EXISTS `hx_users`;
 CREATE TABLE `hx_users` (
@@ -676,4 +802,82 @@ CREATE TABLE `hx_users` (
   KEY `user_nicename` (`user_nicename`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
-SET FOREIGN_KEY_CHECKS = 1;
+-- ----------------------------
+-- Records of hx_users
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for hx_user_account
+-- ----------------------------
+DROP TABLE IF EXISTS `hx_user_account`;
+CREATE TABLE `hx_user_account` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
+  `admin_user` varchar(255) NOT NULL COMMENT '操作该笔交易的管理员的用户名',
+  `amount` decimal(60,2) NOT NULL COMMENT '资金的数目，正数为增加，负数为减少',
+  `admin_note` varchar(255) NOT NULL COMMENT '管理员的备注',
+  `user_note` varchar(255) NOT NULL COMMENT '用户备注',
+  `process_type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '操作类型，2，提现；1，其实就是充值',
+  `payment_id` tinyint(1) NOT NULL COMMENT '支付方式id',
+  `is_paid` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否已经付款，０，未付；１，已付',
+  `status` tinyint(1) DEFAULT '1' COMMENT '删除 1：正常，2：删除',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `pay_time` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`) USING BTREE,
+  KEY `is_paid` (`is_paid`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='会员账户';
+
+-- ----------------------------
+-- Records of hx_user_account
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for hx_user_address
+-- ----------------------------
+DROP TABLE IF EXISTS `hx_user_address`;
+CREATE TABLE `hx_user_address` (
+  `address_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `address_name` varchar(50) NOT NULL DEFAULT '' COMMENT '名称',
+  `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
+  `consignee` varchar(60) NOT NULL DEFAULT '' COMMENT '收货人的名字',
+  `email` varchar(60) NOT NULL DEFAULT '' COMMENT '收货人的email',
+  `country` smallint(5) NOT NULL DEFAULT '0' COMMENT '收货人的国家',
+  `province` smallint(5) NOT NULL DEFAULT '0' COMMENT '收货人的省份',
+  `city` smallint(5) NOT NULL DEFAULT '0' COMMENT '收货人城市',
+  `district` smallint(5) NOT NULL DEFAULT '0' COMMENT '收货人的地区',
+  `address` varchar(120) NOT NULL DEFAULT '' COMMENT '收货人的详细地址',
+  `zipcode` varchar(60) NOT NULL DEFAULT '' COMMENT '收货人的邮编',
+  `tel` varchar(60) NOT NULL DEFAULT '' COMMENT '收货人的电话',
+  `mobile` varchar(60) NOT NULL DEFAULT '' COMMENT '收货人的手机号',
+  `create_time` datetime DEFAULT NULL,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`address_id`),
+  KEY `user_id` (`user_id`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='会员收货表';
+
+-- ----------------------------
+-- Records of hx_user_address
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for hx_user_rank
+-- ----------------------------
+DROP TABLE IF EXISTS `hx_user_rank`;
+CREATE TABLE `hx_user_rank` (
+  `rank_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `rank_name` varchar(30) NOT NULL DEFAULT '' COMMENT '会员等级名称',
+  `min_points` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最低积分',
+  `max_points` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最高积分',
+  `discount` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '该会员等级的商品折扣',
+  `show_price` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否在不是该等级会员购买页面显示该会员等级的折扣价格.1,显示;2,不显示',
+  `special_rank` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否事特殊会员等级组.1,不是;2,是',
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '1：启用;2：禁用',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  PRIMARY KEY (`rank_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='会员等级表';
+
+-- ----------------------------
+-- Records of hx_user_rank
+-- ----------------------------
