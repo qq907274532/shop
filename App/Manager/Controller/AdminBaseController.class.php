@@ -1,6 +1,7 @@
 <?php
     namespace Manager\Controller;
 
+    use Common\Model\LogModel;
     use Think\Controller;
 
     class AdminBaseController extends Controller
@@ -19,7 +20,7 @@
             $this->Auth = new \Library\Auth();
             $this->name = MODULE_NAME . '/' . CONTROLLER_NAME . '/' . ACTION_NAME;
 
-            $this->checkAuth($this->name, $_SESSION['id']);
+           // $this->checkAuth($this->name, $_SESSION['id']);
             self::addLog($_SESSION['id'],MODULE_NAME,CONTROLLER_NAME,ACTION_NAME,I('post.'),I('get.'));
             /*第三级菜单pid*/
             $openId = $this->Auth->getId($this->name);
