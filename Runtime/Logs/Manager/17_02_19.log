@@ -1,0 +1,16 @@
+[ 2017-02-19T20:15:48+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000330s ]
+NOTIC: [2] mysqli_get_server_info() expects exactly 1 parameter, 0 given /Users/svip_zx/www/shop/App/Manager/Conf/config.php 第 17 行.
+
+[ 2017-02-19T20:16:04+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000613s ]
+NOTIC: [2] mysqli_get_server_info() expects exactly 1 parameter, 0 given /Users/svip_zx/www/shop/App/Manager/Conf/config.php 第 17 行.
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000598s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000689s ]
+ERR: Connection closed
+
